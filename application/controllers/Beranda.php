@@ -9,7 +9,7 @@ class Beranda extends CI_Controller {
 		}
 	}
 	public function index() {
-		$data['title'] = "Desa Warung Bambu";
+		$data['title'] = "Desa Penarukan";
 
 		$this->load->view('header', $data);
 		$this->load->view('beranda');
