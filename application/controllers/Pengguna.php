@@ -97,18 +97,6 @@ class Pengguna extends CI_Controller
 			// redirect(base_url('pengguna/edit/' . $this->input->post('id')));
 		}
 
-		if (!empty($password) || !empty($ulangi_password)) {
-			if ($password != $ulangi_password) {
-				$this->session->set_flashdata('error', 'Password dan Ulangi Password tidak sama.');
-				// redirect(base_url('pengguna/edit/' . $this->input->post('id')));
-			}
-			$password = md5($password);
-			$data['password'] = $password;
-		} else {
-			$existing_user = $this->m_user->edit($this->input->post('id'));
-			$data['password'] = $existing_user->password;
-		}
-
 		$data = array(
 			'nama_petugas' => $nama,
 			'nip' => $nip,
@@ -118,6 +106,19 @@ class Pengguna extends CI_Controller
 		$where = array(
 			'id' => $this->input->post('id'),
 		);
+
+		if (!empty($password) || !empty($ulangi_password)) {
+			if ($password != $ulangi_password) {
+				$this->session->set_flashdata('error', 'Password dan Ulangi Password tidak sama.');
+				redirect(base_url('pengguna/edit/' . $this->input->post('id')));
+			}
+			$password = md5($password);
+			$data['password'] = $password;
+		} else {
+			$existing_user = $this->m_user->edit($this->input->post('id'));
+			$data['password'] = $existing_user->password;
+		}
+		var_dump($data);
 		$this->m_user->proses_edit($where, $data);
 		$this->session->set_flashdata('sukses', 'Data Dengan ID ' . $this->input->post('id') . ' berhasil diedit.');
 		redirect(base_url('pengguna'));

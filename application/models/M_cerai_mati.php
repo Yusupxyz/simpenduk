@@ -4,14 +4,14 @@ class M_cerai_mati extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
 
     public function daftar_cerai_mati()
     {
         $this->db->from('cerai_mati');
         $this->db->join('penduduk', 'cerai_mati.nik=penduduk.nik');
-        $this->db->join('pejabat', 'cerai_mati.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'cerai_mati.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -31,7 +31,7 @@ class M_cerai_mati extends CI_Model
         $this->db->from('cerai_mati');
         $this->db->where('id_cerai_mati', $id);
         $this->db->join('penduduk', 'cerai_mati.nik=penduduk.nik');
-        $this->db->join('pejabat', 'cerai_mati.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'cerai_mati.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

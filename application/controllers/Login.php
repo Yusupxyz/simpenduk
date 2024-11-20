@@ -27,6 +27,7 @@ class Login extends CI_Controller {
 			if ($user->num_rows() > 0) {
 				$data = $user->row_array();
 				$this->session->set_userdata('login', TRUE);
+				$this->session->set_userdata('id', $data['id']);
 				$this->session->set_userdata('username', $data['username']);
 				$this->session->set_userdata('nama_petugas', $data['nama_petugas']);
 				$this->session->set_userdata('level', $data['level']);

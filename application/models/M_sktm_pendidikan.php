@@ -4,13 +4,13 @@ class M_sktm_pendidikan extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_sktm_pendidikan()
     {
         $this->db->from('sktm_pendidikan');
         $this->db->join('penduduk', 'sktm_pendidikan.nik_ayah=penduduk.nik');
-        $this->db->join('pejabat', 'sktm_pendidikan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'sktm_pendidikan.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -36,7 +36,7 @@ class M_sktm_pendidikan extends CI_Model
         $this->db->from('sktm_pendidikan');
         $this->db->where('id_sktm_pendidikan', $id);
         $this->db->join('penduduk', 'sktm_pendidikan.nik_anak=penduduk.nik');
-        $this->db->join('pejabat', 'sktm_pendidikan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'sktm_pendidikan.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

@@ -47,17 +47,21 @@ endforeach;
 					  </select>
                   </div>
                   <div class="form-group">
+                    <label>No. Surat</label>
+                    <input type="text" name="no_surat" class="form-control" required value="<?php echo $skck->no_surat; ?>" />
+                  </div>
+                  <div class="form-group">
                     <label>Tanda Tangan</label>
                       <select name="pejabat" class="form-control" required>
 						<?php
 foreach ($pejabat as $pejabat):
-	if ($pejabat->id_pejabat == $skck->id_pejabat) {
+	if ($pejabat->id == $skck->id_pejabat) {
 		?>
-							<option value="<?php echo $pejabat->id_pejabat; ?>"><?php echo $pejabat->nama_pejabat; ?></option>
+							<option value="<?php echo $pejabat->id; ?>"><?php echo $pejabat->nama_petugas; ?></option>
 							<?php
 	} else {
 		?>
-							<option value="<?php echo $pejabat->id_pejabat; ?>"><?php echo $pejabat->nama_pejabat; ?></option>
+							<option value="<?php echo $pejabat->id; ?>"><?php echo $pejabat->nama_petugas; ?></option>
 							<?php
 	}
 endforeach;

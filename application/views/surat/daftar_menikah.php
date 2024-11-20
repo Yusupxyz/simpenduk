@@ -29,6 +29,7 @@
                     <thead>
                         <tr class="active">
                             <th style="text-align:center">No</th>
+                            <th style="text-align:center">No Surat</th>
                             <th style="text-align:center">NIK</th>
                             <th style="text-align:center">Nama</th>
                             <th style="text-align:center">Tanda Tangan</th>
@@ -43,9 +44,10 @@
               ?>
                         <tr>
                             <td style="text-align:center"><?php echo $no; ?></td>
+                            <td><?php echo $surat->no_surat; ?></td>
                             <td><?php echo $surat->nik; ?></td>
                             <td><?php echo $surat->nama; ?></td>
-                            <td><?php echo $surat->nama_pejabat; ?></td>
+                            <td><?php echo $surat->nama_petugas; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('surat/menikah/edit/' . $surat->id_menikah); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>

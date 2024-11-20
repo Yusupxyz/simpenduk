@@ -20,12 +20,21 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN DESA</b></u></font><br />Nomor:
-    145/<?php echo $menikah->id_menikah; ?>/DS/<?php echo substr($menikah->tanggal_menikah, 0, 4); ?>
+    <?php echo $menikah->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertanda tangan dibawah ini , Kepala Desa Warungbambu Kecamatan Karawang Timur Kabupaten Karawang Provinsi Jawa
-    Barat
+    Yang bertanda tangan dibawah ini , 
+    <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($menikah->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($menikah->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+        } else {
+            echo $menikah->level;
+        }
+    ?>  Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>
@@ -70,7 +79,7 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($menikah->tanggal_menikah)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($menikah->tanggal_menikah)); ?></center>
         </td>
     </tr>
     <tr>
@@ -78,13 +87,13 @@
             <center>Yang Bersangkutan</center>
         </td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kecamatan Karawang Timur</center>
+            <center>Kecamatan DUSUN UTARA</center>
         </td>
     </tr>
     <tr>
@@ -228,13 +237,13 @@
             <center><b><u><?php echo $menikah->nama; ?></u></b></center>
         </td>
         <td>
-            <center><b><u><?php echo $menikah->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $menikah->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $menikah->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $menikah->nip; ?></center>
         </td>
     </tr>
 </table>

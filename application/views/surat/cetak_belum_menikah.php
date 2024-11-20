@@ -20,12 +20,21 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN DESA</b></u></font><br />Nomor:
-    145/<?php echo $belum_menikah->id_belum_menikah; ?>/DS/<?php echo substr($belum_menikah->tanggal_belum_menikah, 0, 4); ?>
+    <?php echo $belum_menikah->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertanda tangan dibawah ini , Kepala Desa Warungbambu Kecamatan Karawang Timur Kabupaten Karawang Provinsi Jawa
-    Barat
+    Yang bertanda tangan dibawah ini , 
+    <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($belum_menikah->level == 'Kepala Desa') {
+            echo 'Kepala Desa';
+        } elseif ($belum_menikah->level == 'Sekretaris') {
+            echo 'Sekretaris';
+        } else {
+            echo $belum_menikah->level;
+        }
+    ?>  Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>
@@ -71,7 +80,7 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($belum_menikah->tanggal_belum_menikah)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($belum_menikah->tanggal_belum_menikah)); ?></center>
         </td>
     </tr>
     <tr>
@@ -79,13 +88,13 @@
             <center>Yang Bersangkutan</center>
         </td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kecamatan Karawang Timur</center>
+            <center>Kecamatan DUSUN UTARA</center>
         </td>
     </tr>
     <tr>
@@ -173,13 +182,13 @@
             <center><b><u><?php echo $belum_menikah->nama; ?></u></b></center>
         </td>
         <td>
-            <center><b><u><?php echo $belum_menikah->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $belum_menikah->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $belum_menikah->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $belum_menikah->nip; ?></center>
         </td>
     </tr>
 </table>

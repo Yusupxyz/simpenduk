@@ -187,6 +187,14 @@
                                                 placeholder="Hubungan Sebagai" required
                                                 value="<?php echo $surat_kelahiran->hubungan_sebagai; ?>" />
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>No. Surat</label>
+                                            <input type="text" name="no_surat" class="form-control"
+                                                placeholder="No. Surat" required
+                                                value="<?php echo $surat_kelahiran->no_surat; ?>" />
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Tanda Tangan</label>
                                             <select name="pejabat" class="form-control" required>

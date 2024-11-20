@@ -20,17 +20,17 @@
     <tr>
         <td width="15%">Desa/Kelurahan</td>
         <td width="1%">:</td>
-        <td width="84%">WARUNGBAMBU</td>
+        <td width="84%">Penarukan</td>
     </tr>
     <tr>
         <td>Kecamatan</td>
         <td>:</td>
-        <td>KARAWANG TIMUR</td>
+        <td>DUSUN UTARA</td>
     </tr>
     <tr>
         <td>Kabupaten</td>
         <td>:</td>
-        <td>KARAWANG</td>
+        <td>BARITO SELATAN</td>
     </tr>
     <tr>
         <td>Provinsi</td>
@@ -41,7 +41,7 @@
 <br /><br />
 <center><b>UNTUK YANG BERSANGKUTAN</b> <br />
     <font size="5"><u><b>SURAT KETERANGAN KELAHIRAN</b></u></font><br />Nomor:
-    474.1/<?php echo $surat_kelahiran->id_surat_kelahiran; ?>/Desa/<?php echo substr($surat_kelahiran->tanggal_surat_kelahiran, 0, 4); ?>
+    <?php echo $surat_kelahiran->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
@@ -49,8 +49,8 @@
     // Mengubah level pejabat menjadi format yang benar
     $level = ($surat_kelahiran->level == 'kepaladesa') ? 'Kepala Desa' : 
              (($surat_kelahiran->level == 'sekretaris') ? 'Sekretaris' : $surat_kelahiran->level);
-    echo $level; ?> Desa Warungbambu Kecamatan
-    Karawang Timur Kabupaten Karawang, menerangkan bahwa pada:
+    echo $level; ?> Penarukan Kecamatan
+    DUSUN UTARA Kabupaten BARITO SELATAN, menerangkan bahwa pada:
 </font>
 <table width="100%">
     <tr>
@@ -141,13 +141,13 @@ $pelapor = $this->db->query("SELECT * FROM penduduk WHERE nik='$surat_kelahiran-
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($surat_kelahiran->tanggal_surat_kelahiran)); ?> </center>
+            <center>Penarukan, <?= date('d F Y', strtotime($surat_kelahiran->tanggal_surat_kelahiran)); ?> </center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>

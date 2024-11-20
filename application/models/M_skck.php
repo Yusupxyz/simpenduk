@@ -4,13 +4,13 @@ class M_skck extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_skck()
     {
         $this->db->from('skck');
         $this->db->join('penduduk', 'skck.nik=penduduk.nik');
-        $this->db->join('pejabat', 'skck.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'skck.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -36,7 +36,7 @@ class M_skck extends CI_Model
         $this->db->from('skck');
         $this->db->where('id_skck', $id);
         $this->db->join('penduduk', 'skck.nik=penduduk.nik');
-        $this->db->join('pejabat', 'skck.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'skck.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

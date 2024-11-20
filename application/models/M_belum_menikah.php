@@ -4,13 +4,13 @@ class M_belum_menikah extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_belum_menikah()
     {
         $this->db->from('belum_menikah');
         $this->db->join('penduduk', 'belum_menikah.nik=penduduk.nik');
-        $this->db->join('pejabat', 'belum_menikah.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'belum_menikah.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -36,7 +36,7 @@ class M_belum_menikah extends CI_Model
         $this->db->from('belum_menikah');
         $this->db->where('id_belum_menikah', $id);
         $this->db->join('penduduk', 'belum_menikah.nik=penduduk.nik');
-        $this->db->join('pejabat', 'belum_menikah.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'belum_menikah.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

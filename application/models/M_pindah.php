@@ -5,16 +5,16 @@ class M_pindah extends CI_Model
 {
     public function tampil()
     {
-        $this->db->select('pindahdatang.*, penduduk.*');
-        $this->db->from('pindahdatang');
-        $this->db->join('penduduk', 'penduduk.nik = pindahdatang.nik', 'left');
+        $this->db->select('pindah.*, penduduk.*');
+        $this->db->from('pindah');
+        $this->db->join('penduduk', 'penduduk.nik = pindah.nik', 'left');
         return $this->db->get()->result();
     }
 
     public function cari($nik)
     {
         $this->db->where('nik', $nik);
-        $query = $this->db->get('pindahdatang');
+        $query = $this->db->get('pindah');
         if ($query->num_rows() > 0) {
             return false;
         } else {
@@ -24,29 +24,29 @@ class M_pindah extends CI_Model
 
     public function tambah($data)
     {
-        return $this->db->insert('pindahdatang', $data);
+        return $this->db->insert('pindah', $data);
     }
 
     public function edit($id)
     {
         $this->db->where('id', $id);
-        return $this->db->get('pindahdatang')->row();
+        return $this->db->get('pindah')->row();
     }
 
     public function proses_edit($where, $data)
     {
         $this->db->where($where);
-        return $this->db->update('pindahdatang', $data);
+        return $this->db->update('pindah', $data);
     }
 
     public function hapus($nik)
     {
         $this->db->where('nik', $nik);
-        return $this->db->delete('pindahdatang');
+        return $this->db->delete('pindah');
     }
     public function detail($nik = null)
     {
-        $query = $this->db->get_where('pindahdatang', array('nik' => $nik))->row();
+        $query = $this->db->get_where('pindah', array('nik' => $nik))->row();
         return $query;
     }
 

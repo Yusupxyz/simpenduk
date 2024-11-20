@@ -29,6 +29,7 @@
                     <thead>
                         <tr class="active">
                             <th style="text-align:center">No</th>
+                            <th style="text-align:center">No. Surat</th>
                             <th style="text-align:center">Nama Anak</th>
 
                             <th style="text-align:center">Jenis Kelamin</th>
@@ -47,6 +48,7 @@
                             ?>
                         <tr>
                             <td style="text-align:center"><?php echo $no; ?></td>
+                            <td><?php echo $surat->no_surat; ?></td>
                             <td><?php echo $surat->nama_anak; ?></td>
                             <td><?php echo $surat->kelamin_anak; ?></td>
                             <td><?php echo $surat->tempat_lahir_anak; ?>/

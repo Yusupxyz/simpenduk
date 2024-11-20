@@ -63,7 +63,7 @@ class Pindah extends CI_Controller
 
 	public function edit($id)
 	{
-		$data['title'] = "Edit Pindah  - Desa WarungBambu";
+		$data['title'] = "Edit Pindah  - Desa Penarukan";
 		$data['pindah'] = $this->m_pindah->edit($id);
 		$data['penduduk'] = $this->m_pindah->get_penduduk_edit();
 

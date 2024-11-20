@@ -132,6 +132,12 @@
                                                     placeholder="Hubungan Sebagai" required />
                                             </div>
                                             <div class="form-group">
+                                                <label>No. Surat</label>
+                                                <input type="text" name="no_surat" class="form-control"
+                                                    placeholder="No. Surat" required />
+                                            </div>  
+
+                                            <div class="form-group">
                                                 <label>Tanda Tangan</label>
                                                 <select name="pejabat" class="form-control" required>
                                                     <?php

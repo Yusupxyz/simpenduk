@@ -4,13 +4,15 @@ class M_surat_kematian extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
+    
     public function daftar_surat_kematian()
     {
         $this->db->from('surat_kematian');
         $this->db->join('penduduk', 'surat_kematian.nik=penduduk.nik');
-        $this->db->join('pejabat', 'surat_kematian.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'surat_kematian.id_pejabat=user.id');
+        $this->db->join('kematian', 'surat_kematian.nik=kematian.nik'); // {{ edit_1 }}
         return $this->db->get()->result();
     }
 
@@ -36,7 +38,8 @@ class M_surat_kematian extends CI_Model
         $this->db->from('surat_kematian');
         $this->db->where('id_surat_kematian', $id);
         $this->db->join('penduduk', 'surat_kematian.nik=penduduk.nik');
-        $this->db->join('pejabat', 'surat_kematian.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'surat_kematian.id_pejabat=user.id');
+        $this->db->join('kematian', 'surat_kematian.nik=kematian.nik'); // {{ edit_1 }}
         return $this->db->get()->row();
     }
 

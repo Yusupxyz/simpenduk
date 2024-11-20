@@ -20,12 +20,21 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN TIDAK MAMPU</b></u></font><br />Nomor:
-    470/<?php echo $sktm_pendidikan->id_sktm_pendidikan; ?>/DS/<?php echo substr($sktm_pendidikan->tanggal_sktm_pendidikan, 0, 4); ?>
+    <?php echo $sktm_kesehatan->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertandatangan di bawah ini , <?php echo $sktm_pendidikan->jabatan_pejabat; ?> Desa Warungbambu Kecamatan
-    Karawang Timur Kabupaten Karawang Provinsi Jawa Barat
+    Yang bertandatangan di bawah ini , 
+    <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($sktm_pendidikan->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($sktm_pendidikan->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+        } else {
+            echo $sktm_pendidikan->level;
+        }
+    ?>  Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>
@@ -80,13 +89,13 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($sktm_pendidikan->tanggal_sktm_pendidikan)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($sktm_pendidikan->tanggal_sktm_pendidikan)); ?></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
@@ -176,13 +185,13 @@
     <tr>
         <td></td>
         <td>
-            <center><b><u><?php echo $sktm_pendidikan->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $sktm_pendidikan->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $sktm_pendidikan->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $sktm_pendidikan->nip; ?></center>
         </td>
     </tr>
 </table>

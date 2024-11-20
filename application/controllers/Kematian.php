@@ -49,6 +49,7 @@ class Kematian extends CI_Controller
 		$tanggal_wafat = $this->input->post('tanggal_wafat');
 		$pukul = $this->input->post('pukul');
 		$sebab_wafat = $this->input->post('sebab_wafat');
+		$tempat = $this->input->post('tempat');
 		$keterangan = $this->input->post('keterangan');
 
 		$data = array(
@@ -57,6 +58,7 @@ class Kematian extends CI_Controller
 			'tanggal_wafat' => $tanggal_wafat,
 			'pukul' => $pukul,
 			'sebab_wafat' => $sebab_wafat,
+			'tempat' => $tempat,
 			'keterangan' => $keterangan,
 		);
 		$this->m_kematian->tambah($data);
@@ -85,6 +87,7 @@ class Kematian extends CI_Controller
 			'tanggal_wafat' => $this->input->post('tanggal_wafat'),
 			'pukul' => $this->input->post('pukul'),
 			'sebab_wafat' => $this->input->post('sebab_wafat'),
+			'tempat' => $this->input->post('tempat'),
 			'keterangan' => $this->input->post('keterangan'),
 		);
 		$where = array(

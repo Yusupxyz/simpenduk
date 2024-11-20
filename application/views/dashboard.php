@@ -38,7 +38,7 @@
 
                      <div class="info-box-content">
                          <span class="info-box-text">Pindah</span>
-                         <span class="info-box-number"><?= $this->db->count_all_results('pindahdatang'); ?></span>
+                         <span class="info-box-number"><?= $this->db->count_all_results('pindah'); ?></span>
                      </div>
                  </div>
              </div>

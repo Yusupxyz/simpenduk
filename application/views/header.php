@@ -133,7 +133,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <!-- <ul class="treeview-menu">
+                        <ul class="treeview-menu">
                             <li><a href="<?php echo base_url('surat/surat_kelahiran'); ?>"><i
                                         class="fa fa-envelope-o"></i> <span>Surat Kelahiran</span></a></li>
                             <li><a href="<?php echo base_url('surat/surat_kematian'); ?>"><i
@@ -152,26 +152,25 @@
                                         class="fa fa-envelope-o"></i> <span>SK Belum Menikah</span></a></li>
                             <li><a href="<?php echo base_url('surat/cerai_mati'); ?>"><i class="fa fa-envelope-o"></i>
                                     <span>SK Cerai Mati</span></a></li>
-                            <li><a href="<?php echo base_url('surat/pindah'); ?>"><i class="fa fa-envelope-o"></i>
-                                    <span>Surat Pindah</span></a></li>
                             <li><a href="<?php echo base_url('surat/penghasilan'); ?>"><i class="fa fa-envelope-o"></i>
                                     <span>SK Penghasilan</span></a></li>
-                            <li><a href="<?php echo base_url('surat/pemakaman'); ?>"><i class="fa fa-envelope-o"></i>
-                                    <span>Surat Pemakaman</span></a></li>
                     </li>
-                </ul> -->
+                </ul>
                 </li>
                 <?php
                         }
                         //jika admin atau sekertaris
                         if ($this->session->userdata('level') == 'admin') {
                                 ?>
-                <li><a href="<?php echo base_url('pengguna/'); ?>"><i class="fa fa-user"></i>
+                <li><a href="<?php echo base_url('pengguna/'); ?>"><i class="fa fa-users"></i>
                 <span>Pengguna</span></a></li>
                 <?php
                         }
                         ?>
                 
+                <li><a href="<?php echo base_url('pengguna/edit/' . $this->session->userdata('id')); ?>"><i class="fa fa-user"
+                                aria-hidden="true"></i> <span>Edit Profil</span></a>
+                    </li>
                 <li><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a>
                 </li>
                 </ul>

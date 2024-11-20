@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
-                                <h4 style="text-align:center"><b>EDIT SURAT KETERANGAN TIDAK MAMPU</b></h4>
+                                <h4 style="text-align:center"><b>EDIT SURAT KETERANGAN TIDAK MAMPU KESEHATAN</b></h4>
                                 <hr>
                             </div>
 
@@ -75,19 +75,23 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
+                                            <label>No. Surat</label>
+                                            <input type="text" name="no_surat" class="form-control" placeholder="No. Surat" required  value="<?php echo $sktm_kesehatan->no_surat; ?>"/>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Tanda Tangan</label>
                                             <select name="pejabat" class="form-control" required>
                                                 <?php
 												foreach ($pejabat as $pejabat) :
-													if ($pejabat->id_pejabat == $sktm_kesehatan->id_pejabat) {
+													if ($pejabat->id == $sktm_kesehatan->id_pejabat) {
 														?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>">
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>">
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
 														} else {
 															?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>">
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>">
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
 													}
 												endforeach;

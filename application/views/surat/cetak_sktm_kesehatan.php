@@ -19,13 +19,21 @@
 <img src="<?php echo base_url('assets/images/kop-surat.png'); ?>" width="100%" height="30%">
 <br /><br /><br />
 <center>
-    <font size="5"><u><b>SURAT KETERANGAN TIDAK MAMPU</b></u></font><br />Nomor:
-    470/<?php echo $sktm_kesehatan->id_sktm_kesehatan; ?>/DS/<?php echo substr($sktm_kesehatan->tanggal_sktm_kesehatan, 0, 4); ?>
+    <font size="5"><u><b>SURAT KETERANGAN TIDAK MAMPU KESEHATAN</b></u></font><br />Nomor:
+    <?php echo $sktm_kesehatan->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertandatangan di bawah ini , <?php echo $sktm_kesehatan->jabatan_pejabat; ?> Desa Warungbambu Kecamatan
-    Karawang Timur Kabupaten Karawang Provinsi Jawa Barat
+    Yang bertandatangan di bawah ini , <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($sktm_kesehatan->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($sktm_kesehatan->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+        } else {
+            echo $sktm_kesehatan->level;
+        }
+    ?>  Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>
@@ -81,13 +89,13 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($sktm_kesehatan->tanggal_sktm_kesehatan)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($sktm_kesehatan->tanggal_sktm_kesehatan)); ?></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
@@ -177,13 +185,13 @@
     <tr>
         <td></td>
         <td>
-            <center><b><u><?php echo $sktm_kesehatan->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $sktm_kesehatan->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $sktm_kesehatan->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $sktm_kesehatan->nip; ?></center>
         </td>
     </tr>
 </table>

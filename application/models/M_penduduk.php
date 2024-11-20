@@ -52,4 +52,21 @@ class M_penduduk extends CI_Model
 		$query = $this->db->get('penduduk');
 		return $query->num_rows() > 0;
 	}
+
+	public function tampil_kematian()
+	{
+		$this->db->select('penduduk.*'); // Memilih semua kolom dari tabel penduduk
+		$this->db->from('penduduk');
+		$this->db->join('kematian', 'kematian.nik = penduduk.nik'); // Melakukan join dengan tabel kematian
+		return $this->db->get()->result(); // Mengembalikan hasil
+	}
+
+	public function tampil_pelapor()
+	{
+		$this->db->select('penduduk.*'); // Memilih semua kolom dari tabel penduduk
+		$this->db->from('penduduk');
+		$this->db->join('kematian', 'kematian.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kematian
+		$this->db->where('kematian.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kematian
+		return $this->db->get()->result(); // Mengembalikan hasil
+	}
 }

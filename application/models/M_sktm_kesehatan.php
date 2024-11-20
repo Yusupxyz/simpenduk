@@ -4,13 +4,13 @@ class M_sktm_kesehatan extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_sktm_kesehatan()
     {
         $this->db->from('sktm_kesehatan');
         $this->db->join('penduduk', 'sktm_kesehatan.nik_anak=penduduk.nik');
-        $this->db->join('pejabat', 'sktm_kesehatan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'sktm_kesehatan.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -30,7 +30,7 @@ class M_sktm_kesehatan extends CI_Model
         $this->db->from('sktm_kesehatan');
         $this->db->where('id_sktm_kesehatan', $id);
         $this->db->join('penduduk', 'sktm_kesehatan.nik_anak=penduduk.nik');
-        $this->db->join('pejabat', 'sktm_kesehatan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'sktm_kesehatan.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

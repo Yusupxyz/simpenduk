@@ -20,12 +20,21 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN SKCK</b></u></font><br />Nomor:
-    470/<?php echo $skck->id_skck; ?>/DS/<?php echo substr($skck->tanggal_skck, 0, 4); ?>
+    <?php echo $skck->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertandatangan di bawah ini , <?php echo $skck->jabatan_pejabat; ?> Desa Warungbambu Kecamatan Karawang Timur
-    Kabupaten Karawang Provinsi Jawa Barat
+    Yang bertandatangan di bawah ini , 
+    <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($skck->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($skck->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+        } else {
+            echo $skck->level;
+        }
+    ?>  Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>
@@ -90,13 +99,13 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($skck->tanggal_skck)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($skck->tanggal_skck)); ?></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
@@ -186,13 +195,13 @@
     <tr>
         <td></td>
         <td>
-            <center><b><u><?php echo $skck->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $skck->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $skck->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $skck->nip; ?></center>
         </td>
     </tr>
 </table>

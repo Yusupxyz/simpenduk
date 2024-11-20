@@ -24,7 +24,7 @@
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertanda tangan dibawah ini , Kepala Desa Warungbambu Kecamatan Karawang Timur Kabupaten Karawang Provinsi Jawa
+    Yang bertanda tangan dibawah ini , Kepala Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa
     Barat, Menerangkan bahwa
 </font>
 <table width="100%">
@@ -109,19 +109,19 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($pemakaman->tanggal_pemakaman)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($pemakaman->tanggal_pemakaman)); ?></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kecamatan Karawang Timur</center>
+            <center>Kecamatan DUSUN UTARA</center>
         </td>
     </tr>
     <tr>

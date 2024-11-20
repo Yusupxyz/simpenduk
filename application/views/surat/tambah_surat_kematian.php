@@ -48,59 +48,23 @@
                                             <label>NIK Pelapor</label>
                                             <select name="pelapor" class="form-control" id="nama" required>
                                                 <?php
-                                                foreach ($pendudukkk as $pendudukkk) :
+                                                foreach ($pelapor as $pelapor) :
                                                     ?>
-                                                <option value="<?php echo $pendudukkk->nik; ?>">
-                                                    <?php echo $pendudukkk->nik; ?> - <?php echo $pendudukkk->nama; ?>
+                                                <option value="<?php echo $pelapor->nik; ?>">
+                                                    <?php echo $pelapor->nik; ?> - <?php echo $pelapor->nama; ?>
                                                 </option>
                                                 <?php
                                                 endforeach;
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Umur Pelapor</label>
-                                            <input type="number" name="umur" class="form-control"
-                                                placeholder="Umur Pelapor" required />
-                                        </div>
-                                        <label>Tempat Tanggal Lahir</label>
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <input type="text" name="tempat" class="form-control"
-                                                    placeholder="Tempat">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <select name="hari" class="form-control" required>
-                                                    <option value="" selected disabled>- pilih -</option>
-                                                    <option value="Senin">Senin</option>
-                                                    <option value="Selasa">Selasa</option>
-                                                    <option value="Rabu">Rabu</option>
-                                                    <option value="Kamis">Kamis</option>
-                                                    <option value="Jumat">Jumat</option>
-                                                    <option value="Sabtu">Sabtu</option>
-                                                    <option value="Minggu">Minggu</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-5">
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="date" name="tanggal" class="form-control pull-right">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        
                                     <div class="bootstrap-timepicker">
+                                        
                                         <div class="form-group">
-                                            <label>Pukul</label>
-                                            <div class="input-group">
-                                                <input type="time" name="jam" id="pukul" class="form-control timepicker"
-                                                    required>
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                            </div>
+                                            <label>No. Surat</label>
+                                            <input type="text" name="no_surat" class="form-control"
+                                                placeholder="No. Surat" required />
                                         </div>
                                         <div class="form-group">
                                             <label>Hubungan Sebagai</label>
@@ -113,8 +77,8 @@
                                                 <?php
                                                 foreach ($pejabat as $data_pejabat) :
                                                     ?>
-                                                <option value="<?php echo $data_pejabat->id_pejabat; ?>">
-                                                    <?php echo $data_pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $data_pejabat->id; ?>">
+                                                    <?php echo $data_pejabat->nama_petugas; ?></option>
                                                 <?php
                                                 endforeach;
                                                 ?>

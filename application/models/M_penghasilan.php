@@ -4,13 +4,13 @@ class M_penghasilan extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_penghasilan()
     {
         $this->db->from('penghasilan');
         $this->db->join('penduduk', 'penghasilan.nik=penduduk.nik');
-        $this->db->join('pejabat', 'penghasilan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'penghasilan.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -36,7 +36,7 @@ class M_penghasilan extends CI_Model
         $this->db->from('penghasilan');
         $this->db->where('id_penghasilan', $id);
         $this->db->join('penduduk', 'penghasilan.nik=penduduk.nik');
-        $this->db->join('pejabat', 'penghasilan.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'penghasilan.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

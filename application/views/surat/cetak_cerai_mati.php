@@ -20,7 +20,7 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN</b></u></font><br />Nomor:
-    470/<?php echo $cerai_mati->id_cerai_mati; ?>/II/DS/<?php echo substr($cerai_mati->tanggal_cerai_mati, 0, 4); ?>
+    <?php echo $cerai_mati->no_surat; ?>
 </center>
 <br /><br />
 <font align="justify">
@@ -30,12 +30,12 @@
     <tr>
         <td width="20%">Nama Lengkap</td>
         <td width="3%">:</td>
-        <td width="77%"><?php echo $cerai_mati->nama_pejabat; ?></td>
+        <td width="77%"><?php echo $cerai_mati->nama_petugas; ?></td>
     </tr>
     <tr>
         <td>Jabatan</td>
         <td>:</td>
-        <td><?php echo $cerai_mati->jabatan_pejabat; ?></td>
+        <td><?php echo $cerai_mati->level; ?></td>
     </tr>
 </table>
 <font align="justify">
@@ -96,7 +96,7 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($cerai_mati->tanggal_cerai_mati)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($cerai_mati->tanggal_cerai_mati)); ?></center>
         </td>
     </tr>
     <tr>
@@ -104,13 +104,13 @@
             <center></center>
         </td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kecamatan Karawang Timur</center>
+            <center>Kecamatan DUSUN UTARA</center>
         </td>
     </tr>
     <tr>
@@ -232,13 +232,13 @@
     <tr>
         <td></td>
         <td>
-            <center><b><u><?php echo $cerai_mati->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $cerai_mati->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $cerai_mati->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $cerai_mati->nip; ?></center>
         </td>
     </tr>
 </table>

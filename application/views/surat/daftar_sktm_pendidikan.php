@@ -29,6 +29,7 @@
                     <thead>
                         <tr class="active">
                             <th style="text-align:center">No</th>
+                            <th style="text-align:center">No. Surat</th>
                             <th style="text-align:center">NIK Ayah</th>
                             <th style="text-align:center">Nama Ayah</th>
                             <th style="text-align:center">NIK Anak</th>
@@ -46,11 +47,12 @@
                             ?>
                         <tr>
                             <td style="text-align:center"><?php echo $no; ?></td>
+                            <td><?php echo $surat->no_surat; ?></td>
                             <td><?php echo $surat->nik; ?></td>
                             <td><?php echo $surat->nama; ?></td>
                             <td><?php echo $anak->nik; ?></td>
                             <td><?php echo $anak->nama; ?></td>
-                            <td><?php echo $surat->nama_pejabat; ?></td>
+                            <td><?php echo $surat->nama_petugas; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('surat/sktm_pendidikan/edit/' . $surat->id_sktm_pendidikan); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>

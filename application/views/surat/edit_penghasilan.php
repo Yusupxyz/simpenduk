@@ -55,17 +55,21 @@ endforeach;
                     <input type="text" value="<?php echo $penghasilan->keperluan_penghasilan; ?>" name="keperluan" class="form-control" placeholder="Keperluan" required />
                   </div>
                   <div class="form-group">
+                    <label>Nomor Surat</label>
+                    <input type="text" value="<?php echo $penghasilan->no_surat; ?>" name="no_surat" class="form-control" placeholder="Nomor Surat" required />
+                  </div>
+                  <div class="form-group">
                     <label>Tanda Tangan</label>
                       <select name="pejabat" class="form-control" required>
 						<?php
 foreach ($pejabat as $pejabat):
-	if ($pejabat->id_pejabat == $penghasilan->id_pejabat) {
+	if ($pejabat->id == $penghasilan->id_pejabat) {
 		?>
-							<option value="<?php echo $pejabat->id_pejabat; ?>"><?php echo $pejabat->nama_pejabat; ?></option>
+							<option value="<?php echo $pejabat->id; ?>"><?php echo $pejabat->nama_petugas; ?></option>
 							<?php
 	} else {
 		?>
-							<option value="<?php echo $pejabat->id_pejabat; ?>"><?php echo $pejabat->nama_pejabat; ?></option>
+							<option value="<?php echo $pejabat->id; ?>"><?php echo $pejabat->nama_petugas; ?></option>
 							<?php
 	}
 endforeach;

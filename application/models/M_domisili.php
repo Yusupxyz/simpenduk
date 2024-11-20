@@ -4,13 +4,13 @@ class M_domisili extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_domisili()
     {
         $this->db->from('domisili');
         $this->db->join('penduduk', 'domisili.nik=penduduk.nik');
-        $this->db->join('pejabat', 'domisili.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'domisili.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -30,7 +30,7 @@ class M_domisili extends CI_Model
         $this->db->from('domisili');
         $this->db->where('id_domisili', $id);
         $this->db->join('penduduk', 'domisili.nik=penduduk.nik');
-        $this->db->join('pejabat', 'domisili.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'domisili.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

@@ -44,12 +44,17 @@ endforeach;
                     </select>
                   </div>
                   <div class="form-group">
+                                                <label>No. Surat</label>
+                                                <input type="text" name="no_surat" class="form-control"
+                                                    placeholder="No. Surat" required />
+                                            </div>  
+                  <div class="form-group">
                     <label>Tanda Tangan</label>
                     <select name="pejabat" class="form-control" required>
                       <?php
 foreach ($pejabat as $data_pejabat):
 ?>
-                        <option value="<?php echo $data_pejabat->id_pejabat; ?>"><?php echo $data_pejabat->nama_pejabat; ?></option>
+                        <option value="<?php echo $data_pejabat->id; ?>"><?php echo $data_pejabat->nama_petugas; ?></option>
                         <?php
 endforeach;
 ?>

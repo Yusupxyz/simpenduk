@@ -20,7 +20,7 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN</b></u></font><br />Nomor:
-    145/<?php echo $penghasilan->id_penghasilan; ?>/DS/<?php echo substr($penghasilan->tanggal_penghasilan, 0, 4); ?>
+    <?php echo $penghasilan->no_surat; ?>
 </center>
 <br /><br />
 <font align="justify">
@@ -30,12 +30,21 @@
     <tr>
         <td width="20%">Nama Lengkap</td>
         <td width="3%">:</td>
-        <td width="77%"><?php echo $penghasilan->nama_pejabat; ?></td>
+        <td width="77%"><?php echo $penghasilan->nama_petugas; ?></td>
     </tr>
     <tr>
         <td>Jabatan</td>
         <td>:</td>
-        <td><?php echo $penghasilan->jabatan_pejabat; ?></td>
+        <td><?php 
+        // Menentukan level berdasarkan jabatan
+        if ($penghasilan->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($penghasilan->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+            } else {
+                echo $penghasilan->level;
+            }
+        ?></td>
     </tr>
 </table>
 <br>
@@ -105,7 +114,7 @@
 <br />
 <font align="justify">
     Surat Keterangan ini dinyatakan tidak berlaku apabila terjadi pelanggaran peraturan perundang-undangan dan perda
-    Kabupaten Karawang serta, apabila terdapat kekeliruan/kesalahan dalam pembuatannya. Pemohon/pemegang bersedia
+    Kabupaten BARITO SELATAN serta, apabila terdapat kekeliruan/kesalahan dalam pembuatannya. Pemohon/pemegang bersedia
     mempertanggung jawabakan secara hukum tanpa melibatkan pihak manapun<br />
 
     Demikian surat keterangan ini dibuat dengan sebenarnya serta dapat dipergunakan sebagaimana mestinya.<br /><br />
@@ -114,7 +123,7 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($penghasilan->tanggal_penghasilan)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($penghasilan->tanggal_penghasilan)); ?></center>
         </td>
     </tr>
     <tr>
@@ -122,13 +131,13 @@
             <center>Yang Bersangkutan</center>
         </td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kecamatan Karawang Timur</center>
+            <center>Kecamatan DUSUN UTARA</center>
         </td>
     </tr>
     <tr>

@@ -2,7 +2,7 @@
   <section class="content">
     <div class="box box-info">
       <div class="box-header">
-        <h4 style="text-align:center"><b>EDIT PENGUNA</b></h4><hr>
+        <h4 style="text-align:center"><b>EDIT PENGGUNA</b></h4><hr>
       </div>
 
       <div class="box-body">
@@ -33,7 +33,7 @@ if ($this->session->flashdata('sukses')) {
 
         <form action="<?php echo base_url('pengguna/proses_edit'); ?>" method="post">
             <div class="form-group">
-          <label>Nama Petugas<span style="color:red;">*</span></label>
+          <label>Nama<span style="color:red;">*</span></label>
           <input type="hidden" name="id" value="<?php echo $pengguna->id; ?>"  class="form-control" />
           <input type="text" name="nama" value="<?php echo $pengguna->nama_petugas; ?>"  class="form-control" />
         </div>

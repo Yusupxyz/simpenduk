@@ -13,99 +13,15 @@ class Surat extends CI_Controller
 		$this->load->model('m_cerai_mati');
 		$this->load->model('m_belum_menikah');
 		$this->load->model('m_menikah');
-		$this->load->model('m_surat_pindah');
 		$this->load->model('m_skck');
 		$this->load->model('m_sktm_pendidikan');
 		$this->load->model('m_sktm_kesehatan');
 		$this->load->model('m_surat_kelahiran');
 		$this->load->model('m_surat_kematian');
 		$this->load->model('m_penghasilan');
-		$this->load->model('m_pemakaman');
 		$this->load->model('m_penduduk');
 	}
-	public function pindah()
-	{
-		if ($this->uri->segment('3') == "tambah") {
-			if ($this->input->post('tambah_pindah')) {
-				$data = array(
-					'nik_kepala_keluarga' => $this->input->post('nik_kepala'),
-					'nik_pemohon' => $this->input->post('nik_pemohon'),
-					'alasan_pindah' => $this->input->post('alasan'),
-					'alamat_pindah' => $this->input->post('alamat'),
-					'rt_pindah' => $this->input->post('rt'),
-					'rw_pindah' => $this->input->post('rw'),
-					'dusun_pindah' => $this->input->post('dusun'),
-					'desa_pindah' => $this->input->post('desa'),
-					'kecamatan_pindah' => $this->input->post('kecamatan'),
-					'kabupaten_pindah' => $this->input->post('kabupaten'),
-					'provinsi_pindah' => $this->input->post('provinsi'),
-					'kode_pos_pindah' => $this->input->post('kode_pos'),
-					'telepon_pindah' => $this->input->post('telepon'),
-					'id_pejabat' => $this->input->post('pejabat'),
-					'tanggal_pindah' => date('Y-m-d'),
-				);
-				$this->m_surat_pindah->tambah_pindah($data);
-				$this->session->set_flashdata('sukses', 'Data berhasil ditambahkan.');
-				redirect(base_url('surat/pindah/'));
-			} else {
-				$data['title'] = "Surat Pindah - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukk'] = $this->m_penduduk->tampil();
-				$data['pejabat'] = $this->m_surat_pindah->pejabat();
-				$this->load->view('header', $data);
-				$this->load->view('surat/tambah_pindah', $data);
-				$this->load->view('footer');
-			}
-		} elseif ($this->uri->segment('3') == "edit") {
-			if ($this->input->post('edit_pindah')) {
-				$data = array(
-					'nik_kepala_keluarga' => $this->input->post('nik_kepala'),
-					'nik_pemohon' => $this->input->post('nik_pemohon'),
-					'alasan_pindah' => $this->input->post('alasan'),
-					'alamat_pindah' => $this->input->post('alamat'),
-					'rt_pindah' => $this->input->post('rt'),
-					'rw_pindah' => $this->input->post('rw'),
-					'dusun_pindah' => $this->input->post('dusun'),
-					'desa_pindah' => $this->input->post('desa'),
-					'kecamatan_pindah' => $this->input->post('kecamatan'),
-					'kabupaten_pindah' => $this->input->post('kabupaten'),
-					'provinsi_pindah' => $this->input->post('provinsi'),
-					'kode_pos_pindah' => $this->input->post('kode_pos'),
-					'telepon_pindah' => $this->input->post('telepon'),
-					'id_pejabat' => $this->input->post('pejabat'),
-					'tanggal_pindah' => date('Y-m-d'),
-				);
-				$where = array(
-					'id_pindah' => $this->input->post('id'),
-				);
-				$this->m_surat_pindah->proses_edit_pindah($where, $data);
-				$this->session->set_flashdata('sukses', 'Data berhasil diedit.');
-				redirect(base_url('surat/pindah/'));
-			} else {
-				$data['title'] = "Surat Pindah - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukk'] = $this->m_penduduk->tampil();
-				$data['pejabat'] = $this->m_surat_pindah->pejabat();
-				$data['pindah'] = $this->m_surat_pindah->edit_pindah($this->uri->segment('4'));
-				$this->load->view('header', $data);
-				$this->load->view('surat/edit_pindah', $data);
-				$this->load->view('footer');
-			}
-		} elseif ($this->uri->segment('3') == "cetak") {
-			$data['pindah'] = $this->m_surat_pindah->cetak_pindah($this->uri->segment('4'));
-			$this->load->view('surat/cetak_pindah', $data);
-		} elseif ($this->uri->segment('3') == "hapus") {
-			$this->m_surat_pindah->hapus_pindah($this->uri->segment('4'));
-			$this->session->set_flashdata('sukses', 'Data berhasil dihapus.');
-			redirect(base_url('surat/pindah'));
-		} else {
-			$data['title'] = "Surat Pindah - Desa Penarukan";
-			$data['surat'] = $this->m_surat_pindah->daftar_pindah();
-			$mutasi = $this->load->view('header', $data);
-			$this->load->view('surat/daftar_pindah');
-			$this->load->view('footer');
-		}
-	}
+	
 	public function domisili()
 	{
 		if ($this->uri->segment('3') == "tambah") {
@@ -113,6 +29,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'no_surat_rt' => $this->input->post('pengantar'),
+					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'tanggal_domisili' => date('Y-m-d'),
 				);
@@ -133,6 +50,7 @@ class Surat extends CI_Controller
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'no_surat_rt' => $this->input->post('pengantar'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_domisili' => $this->input->post('id'),
@@ -172,6 +90,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_belum_menikah' => date('Y-m-d'),
 				);
 				$this->m_belum_menikah->tambah_belum_menikah($data);
@@ -190,6 +109,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_belum_menikah' => $this->input->post('id'),
@@ -229,6 +149,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_menikah' => date('Y-m-d'),
 				);
 				$this->m_menikah->tambah_menikah($data);
@@ -247,6 +168,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_menikah' => $this->input->post('id'),
@@ -286,6 +208,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_cerai_mati' => date('Y-m-d'),
 				);
 				$this->m_cerai_mati->tambah_cerai_mati($data);
@@ -304,6 +227,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_cerai_mati' => $this->input->post('id'),
@@ -343,6 +267,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_skck' => date('Y-m-d'),
 				);
 				$this->m_skck->tambah_skck($data);
@@ -361,6 +286,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_skck' => $this->input->post('id'),
@@ -400,6 +326,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'jumlah_penghasilan' => $this->input->post('jumlah'),
 					'keperluan_penghasilan' => $this->input->post('keperluan'),
 					'tanggal_penghasilan' => date('Y-m-d'),
@@ -420,6 +347,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'jumlah_penghasilan' => $this->input->post('jumlah'),
 					'keperluan_penghasilan' => $this->input->post('keperluan'),
 				);
@@ -470,6 +398,7 @@ class Surat extends CI_Controller
 					'hari_lahir_anak' => $this->input->post('hari'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_surat_kelahiran' => date('Y-m-d'),
 				);
 				$this->m_surat_kelahiran->tambah_surat_kelahiran($data);
@@ -498,6 +427,7 @@ class Surat extends CI_Controller
 					'jam_lahir_anak' => $this->input->post('jam'),
 					'hari_lahir_anak' => $this->input->post('hari'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
 				);
 				$where = array(
@@ -540,12 +470,8 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'nik_pelapor' => $this->input->post('pelapor'),
-					'umur_pelapor' => $this->input->post('umur'),
-					'tempat_kematian' => $this->input->post('tempat'),
-					'tanggal_kematian' => $this->input->post('tanggal'),
-					'jam_kematian' => $this->input->post('jam'),
-					'hari_kematian' => $this->input->post('hari'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
 					'tanggal_surat_kematian' => date('Y-m-d'),
 				);
@@ -554,8 +480,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kematian/'));
 			} else {
 				$data['title'] = "Surat Kematian - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukkk'] = $this->m_penduduk->tampil();
+				$data['penduduk'] = $this->m_penduduk->tampil_kematian();
+				$data['pelapor'] = $this->m_penduduk->tampil_pelapor();
 				$data['pejabat'] = $this->m_surat_kematian->pejabat();
 				$this->load->view('header', $data);
 				$this->load->view('surat/tambah_surat_kematian', $data);
@@ -566,11 +492,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik' => $this->input->post('nik'),
 					'nik_pelapor' => $this->input->post('pelapor'),
-					'umur_pelapor' => $this->input->post('umur'),
-					'tempat_kematian' => $this->input->post('tempat'),
-					'tanggal_kematian' => $this->input->post('tanggal'),
-					'jam_kematian' => $this->input->post('jam'),
-					'hari_kematian' => $this->input->post('hari'),
+					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
 				);
@@ -582,8 +504,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kematian/'));
 			} else {
 				$data['title'] = "Surat Kematian - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukkk'] = $this->m_penduduk->tampil();
+				$data['penduduk'] = $this->m_penduduk->tampil_kematian();
+				$data['pelapor'] = $this->m_penduduk->tampil_pelapor();
 				$data['pejabat'] = $this->m_surat_kematian->pejabat();
 				$data['surat_kematian'] = $this->m_surat_kematian->edit_surat_kematian($this->uri->segment('4'));
 				$this->load->view('header', $data);
@@ -614,6 +536,7 @@ class Surat extends CI_Controller
 					'nik_ayah' => $this->input->post('ayah'),
 					'nik_anak' => $this->input->post('anak'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 					'tanggal_sktm_pendidikan' => date('Y-m-d'),
 				);
 				$this->m_sktm_pendidikan->tambah_sktm_pendidikan($data);
@@ -634,6 +557,7 @@ class Surat extends CI_Controller
 					'nik_ayah' => $this->input->post('ayah'),
 					'nik_anak' => $this->input->post('anak'),
 					'id_pejabat' => $this->input->post('pejabat'),
+					'no_surat' => $this->input->post('no_surat'),
 				);
 				$where = array(
 					'id_sktm_pendidikan' => $this->input->post('id'),
@@ -674,6 +598,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik_ayah' => $this->input->post('ayah'),
 					'nik_anak' => $this->input->post('anak'),
+					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'tanggal_sktm_kesehatan' => date('Y-m-d'),
 				);
@@ -694,6 +619,7 @@ class Surat extends CI_Controller
 				$data = array(
 					'nik_ayah' => $this->input->post('ayah'),
 					'nik_anak' => $this->input->post('anak'),
+					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
 				);
 				$where = array(
@@ -724,71 +650,6 @@ class Surat extends CI_Controller
 			$data['surat'] = $this->m_sktm_kesehatan->daftar_sktm_kesehatan();
 			$mutasi = $this->load->view('header', $data);
 			$this->load->view('surat/daftar_sktm_kesehatan');
-			$this->load->view('footer');
-		}
-	}
-
-	public function pemakaman()
-	{
-		if ($this->uri->segment('3') == "tambah") {
-			if ($this->input->post('tambah_pemakaman')) {
-				$data = array(
-					'nik' => $this->input->post('nik'),
-					'id_pejabat' => $this->input->post('pejabat'),
-					'tempat_pemakaman' => $this->input->post('tempat'),
-					'hari_pemakaman' => $this->input->post('hari'),
-					'tanggal_dimakamkan' => $this->input->post('tanggal'),
-					'jam_dimakamkan' => $this->input->post('jam'),
-					'tanggal_pemakaman' => date('Y-m-d'),
-				);
-				$this->m_pemakaman->tambah_pemakaman($data);
-				$this->session->set_flashdata('sukses', 'Data berhasil ditambahkan.');
-				redirect(base_url('surat/pemakaman/'));
-			} else {
-				$data['title'] = "Surat Keterangan Pemakaman - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pejabat'] = $this->m_pemakaman->pejabat();
-				$this->load->view('header', $data);
-				$this->load->view('surat/tambah_pemakaman', $data);
-				$this->load->view('footer');
-			}
-		} elseif ($this->uri->segment('3') == "edit") {
-			if ($this->input->post('edit_pemakaman')) {
-				$data = array(
-					'nik' => $this->input->post('nik'),
-					'id_pejabat' => $this->input->post('pejabat'),
-					'tempat_pemakaman' => $this->input->post('tempat'),
-					'hari_pemakaman' => $this->input->post('hari'),
-					'tanggal_dimakamkan' => $this->input->post('tanggal'),
-					'jam_dimakamkan' => $this->input->post('jam'),
-				);
-				$where = array(
-					'id_pemakaman' => $this->input->post('id'),
-				);
-				$this->m_pemakaman->proses_edit_pemakaman($where, $data);
-				$this->session->set_flashdata('sukses', 'Data berhasil diedit.');
-				redirect(base_url('surat/pemakaman/'));
-			} else {
-				$data['title'] = "Surat Keterangan Pemakaman - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pejabat'] = $this->m_pemakaman->pejabat();
-				$data['pemakaman'] = $this->m_pemakaman->edit_pemakaman($this->uri->segment('4'));
-				$this->load->view('header', $data);
-				$this->load->view('surat/edit_pemakaman', $data);
-				$this->load->view('footer');
-			}
-		} elseif ($this->uri->segment('3') == "cetak") {
-			$data['pemakaman'] = $this->m_pemakaman->cetak_pemakaman($this->uri->segment('4'));
-			$this->load->view('surat/cetak_pemakaman', $data);
-		} elseif ($this->uri->segment('3') == "hapus") {
-			$this->m_pemakaman->hapus_pemakaman($this->uri->segment('4'));
-			$this->session->set_flashdata('sukses', 'Data berhasil dihapus.');
-			redirect(base_url('surat/pemakaman'));
-		} else {
-			$data['title'] = "Surat Keterangan Pemakaman - Desa Penarukan";
-			$data['surat'] = $this->m_pemakaman->daftar_pemakaman();
-			$mutasi = $this->load->view('header', $data);
-			$this->load->view('surat/daftar_pemakaman');
 			$this->load->view('footer');
 		}
 	}

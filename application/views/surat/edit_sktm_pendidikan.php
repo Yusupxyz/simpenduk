@@ -75,19 +75,23 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
+                                            <label>No. Surat</label>
+                                            <input type="text" name="no_surat" class="form-control" placeholder="No. Surat" required value="<?php echo $sktm_pendidikan->no_surat; ?>" />
+                                        </div>
+                                        <div class="form-group">
                                             <label>Tanda Tangan</label>
                                             <select name="pejabat" class="form-control" required>
                                                 <?php
 												foreach ($pejabat as $pejabat) :
-													if ($pejabat->id_pejabat == $sktm_pendidikan->id_pejabat) {
+													if ($pejabat->id == $sktm_pendidikan->id_pejabat) {
 														?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>">
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>">
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
 														} else {
 															?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>">
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>">
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
 													}
 												endforeach;

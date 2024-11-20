@@ -56,17 +56,17 @@
                                             <label>NIK Pelapor</label>
                                             <select name="pelapor" class="form-control" id="nik" required>
                                                 <?php
-                                                foreach ($pendudukkk as $pendudukkk) :
-                                                    if ($pendudukkk->nik == $surat_kematian->nik_pelapor) {
+                                                foreach ($pelapor as $pelapor) :
+                                                    if ($pelapor->nik == $surat_kematian->nik_pelapor) {
                                                         ?>
-                                                <option value="<?php echo $pendudukkk->nik; ?>" selected>
-                                                    <?php echo $pendudukkk->nik; ?> - <?php echo $pendudukkk->nama; ?>
+                                                <option value="<?php echo $pelapor->nik; ?>" selected>
+                                                    <?php echo $pelapor->nik; ?> - <?php echo $pelapor->nama; ?>
                                                 </option>
                                                 <?php
                                                         } else {
                                                             ?>
-                                                <option value="<?php echo $pendudukkk->nik; ?>">
-                                                    <?php echo $pendudukkk->nik; ?> - <?php echo $pendudukkk->nama; ?>
+                                                <option value="<?php echo $pelapor->nik; ?>">
+                                                    <?php echo $pelapor->nik; ?> - <?php echo $pelapor->nama; ?>
                                                 </option>
                                                 <?php
                                                     }
@@ -74,75 +74,12 @@
                                                 ?>
                                             </select>
                                         </div>
+
                                         <div class="form-group">
-                                            <label>Umur Pelapor</label>
-                                            <input type="number" name="umur" class="form-control"
-                                                placeholder="Umur Pelapor" required
-                                                value="<?php echo $surat_kematian->umur_pelapor; ?>" />
-                                        </div>
-                                        <div class="form-group"></div>
-                                        <label>Tempat Tanggal Lahir</label>
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <input type="text" name="tempat"
-                                                    value="<?php echo $surat_kematian->tempat_kematian; ?>"
-                                                    class="form-control" placeholder="Tempat">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <select name="hari" class="form-control" required>
-                                                    <option value="Senin"
-                                                        <?php if ($surat_kematian->hari_kematian == "Senin") echo "selected"; ?>>
-                                                        Senin
-                                                    </option>
-                                                    <option value="Selasa"
-                                                        <?php if ($surat_kematian->hari_kematian == "Selasa") echo "selected"; ?>>
-                                                        Selasa
-                                                    </option>
-                                                    <option value="Rabu"
-                                                        <?php if ($surat_kematian->hari_kematian == "Rabu") echo "selected"; ?>>
-                                                        Rabu
-                                                    </option>
-                                                    <option value="Kamis"
-                                                        <?php if ($surat_kematian->hari_kematian == "Kamis") echo "selected"; ?>>
-                                                        Kamis
-                                                    </option>
-                                                    <option value="Jumat"
-                                                        <?php if ($surat_kematian->hari_kematian == "Jumat") echo "selected"; ?>>
-                                                        jumat
-                                                    </option>
-                                                    <option value="Sabtu"
-                                                        <?php if ($surat_kematian->hari_kematian == "Sabtu") echo "selected"; ?>>
-                                                        Sabtu
-                                                    </option>
-                                                    <option value="Minggu"
-                                                        <?php if ($surat_kematian->hari_kematian == "Minggu") echo "selected"; ?>>
-                                                        Minggu
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-5">
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="date" name="tanggal"
-                                                        value="<?php echo $surat_kematian->tanggal_kematian; ?>"
-                                                        class="form-control pull-right">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Pukul</label>
-                                            <div class="input-group">
-                                                <input type="time" name="jam"
-                                                    value="<?php echo $surat_kematian->jam_kematian; ?>" id="pukul"
-                                                    class="form-control timepicker" required>
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                            </div>
+                                            <label>No. Surat</label>
+                                            <input type="text" name="no_surat" class="form-control"
+                                                placeholder="No. Surat" required
+                                                value="<?php echo $surat_kematian->no_surat; ?>" />
                                         </div>
                                         <div class="form-group">
                                             <label>Hubungan Sebagai</label>
@@ -155,15 +92,15 @@
                                             <select name="pejabat" class="form-control" required>
                                                 <?php
                                                 foreach ($pejabat as $pejabat) :
-                                                    if ($pejabat->id_pejabat == $surat_kematian->id_pejabat) {
+                                                    if ($pejabat->id == $surat_kematian->id_pejabat) {
                                                         ?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>" selected>
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>" selected>
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
                                                         } else {
                                                             ?>
-                                                <option value="<?php echo $pejabat->id_pejabat; ?>">
-                                                    <?php echo $pejabat->nama_pejabat; ?></option>
+                                                <option value="<?php echo $pejabat->id; ?>">
+                                                    <?php echo $pejabat->nama_petugas; ?></option>
                                                 <?php
                                                     }
                                                 endforeach;

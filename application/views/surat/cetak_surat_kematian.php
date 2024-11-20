@@ -20,33 +20,43 @@
     <tr>
         <td width="15%">Desa/Kelurahan</td>
         <td width="1%">:</td>
-        <td width="84%">WARUNGBAMBU</td>
+        <td width="84%">PENARUKAN</td>
     </tr>
     <tr>
         <td>Kecamatan</td>
         <td>:</td>
-        <td>KARAWANG TIMUR</td>
+        <td>DUSUN UTARA</td>
     </tr>
     <tr>
         <td>Kabupaten</td>
         <td>:</td>
-        <td>KARAWANG</td>
+        <td>BARITO SELATAN</td>
     </tr>
     <tr>
         <td>Provinsi</td>
         <td>:</td>
-        <td>JAWA BARAT</td>
+        <td>KALIMANTAN TENGAH</td>
     </tr>
 </table>
 <br /><br />
 <center><b>UNTUK YANG BERSANGKUTAN</b> <br />
     <font size="5"><u><b>SURAT KETERANGAN KEMATIAN</b></u></font><br />Nomor:
-    474.1/<?php echo $surat_kematian->id_surat_kematian; ?>/Desa/<?php echo substr($surat_kematian->tanggal_surat_kematian, 0, 4); ?>
+    <?php echo $surat_kelahiran->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
-    Yang bertandatangan di bawah ini , <?php echo $surat_kematian->jabatan_pejabat; ?> Desa Warungbambu Kecamatan
-    Karawang Timur Kabupaten Karawang, menerangkan bahwa pada:
+    Yang bertandatangan di bawah ini , 
+    <?php 
+        // Menentukan level berdasarkan jabatan
+        if ($surat_kematian->level == 'kepaladesa') {
+            echo 'Kepala Desa';
+        } elseif ($surat_kematian->level == 'sekretaris') {
+            echo 'Sekretaris Desa';
+        } else {
+            echo $surat_kematian->level;
+        }
+    ?> 
+    Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat, menerangkan bahwa pada:
 </font>
 <table width="100%">
     <tr>
@@ -88,19 +98,19 @@
         <td width="20%">Hari/Tanggal</td>
         <td width="3%">:</td>
         <td width="77%">
-            <?php echo $surat_kematian->hari_kematian; ?> /
-            <?= date('d F Y', strtotime($surat_kematian->tanggal_kematian)); ?>
+            <?php echo $surat_kematian->hari_wafat; ?> /
+            <?= date('d F Y', strtotime($surat_kematian->tanggal_wafat)); ?>
         </td>
     </tr>
     <tr>
         <td>Jam</td>
         <td>:</td>
-        <td><?php echo $surat_kematian->jam_kematian; ?></td>
+        <td><?php echo $surat_kematian->pukul; ?></td>
     </tr>
     <tr>
         <td>Tempat Kematian</td>
         <td>:</td>
-        <td><?php echo $surat_kematian->tempat_kematian; ?></td>
+        <td><?php echo $surat_kematian->tempat; ?></td>
     </tr>
 </table>
 <br />Demikian Surat Keterangan Kematian ini dibuat berdasarkan keterangan pelapor:
@@ -154,13 +164,13 @@ $pelapor = $this->db->query("SELECT * FROM penduduk WHERE nik='$surat_kematian->
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            <center>Warungbambu, <?= date('d F Y', strtotime($surat_kematian->tanggal_surat_kematian)); ?></center>
+            <center>Penarukan, <?= date('d F Y', strtotime($surat_kematian->tanggal_surat_kematian)); ?></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>Kepala Desa Warungbambu</center>
+            <center>Kepala Desa Penarukan</center>
         </td>
     </tr>
     <tr>
@@ -250,13 +260,13 @@ $pelapor = $this->db->query("SELECT * FROM penduduk WHERE nik='$surat_kematian->
     <tr>
         <td></td>
         <td>
-            <center><b><u><?php echo $surat_kematian->nama_pejabat; ?></u></b></center>
+            <center><b><u><?php echo $surat_kematian->nama_petugas; ?></u></b></center>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <center>NIP. <?php echo $surat_kematian->nip_pejabat; ?></center>
+            <center>NIP. <?php echo $surat_kematian->nip; ?></center>
         </td>
     </tr>
 </table>

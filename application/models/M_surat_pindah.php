@@ -4,13 +4,13 @@ class M_surat_pindah extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM pejabat")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
     }
     public function daftar_pindah()
     {
         $this->db->from('pindah');
         $this->db->join('penduduk', 'pindah.nik_kepala_keluarga=penduduk.nik');
-        $this->db->join('pejabat', 'pindah.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'pindah.id_pejabat=user.id');
         return $this->db->get()->result();
     }
 
@@ -30,7 +30,7 @@ class M_surat_pindah extends CI_Model
         $this->db->from('pindah');
         $this->db->where('id_pindah', $id);
         $this->db->join('penduduk', 'pindah.nik_kepala_keluarga=penduduk.nik');
-        $this->db->join('pejabat', 'pindah.id_pejabat=pejabat.id_pejabat');
+        $this->db->join('user', 'pindah.id_pejabat=user.id');
         return $this->db->get()->row();
     }
 

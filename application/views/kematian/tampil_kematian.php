@@ -34,6 +34,7 @@
                             <th style="text-align:center">Jenis Kelamin</th>
                             <th style="text-align:center">Alamat</th>
                             <th style="text-align:center">Tanggal Wafat</th>
+                            <th style="text-align:center">Tempat Wafat</th>
                             <th style="text-align:center">Penyebab Kematian</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
@@ -56,6 +57,7 @@
                             <td><?php echo $kematian->jenis_kelamin; ?></td>
                             <td><?php echo $kematian->alamat; ?></td>
                             <td><?= date('d F Y', strtotime($kematian->tanggal_wafat)); ?></td>
+                            <td><?php echo $kematian->tempat; ?></td>
                             <td><?php echo $kematian->sebab_wafat; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('kematian/edit/' . $kematian->id); ?>"
@@ -65,8 +67,6 @@
                                     class="btn btn-danger btn-xs"
                                     onClick="return confirm('Yakin Akan Menghapus Data?');"><i
                                         class="fa fa-trash-o"></i> Hapus</a>
-                                <a href="<?php echo base_url('kematian/detail/' . $kematian->id); ?>"
-                                    class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i> Detail</a>
                         </tr>
                         </td>
                         <?php

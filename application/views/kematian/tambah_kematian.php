@@ -80,6 +80,10 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
+                                        <label>Tempat Wafat</label>
+                                        <input type="text" name="tempat" class="form-control" required />
+                                    </div>
+                                <div class="form-group">
                                         <label>Penyebab Kematian</label>
                                         <input type="text" name="sebab_wafat" class="form-control" required />
                                     </div>
