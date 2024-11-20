@@ -5,7 +5,16 @@ class M_kelahiran extends CI_Model
 {
 	public function tampil()
 	{
-		return $this->db->get('kelahiran')->result();
+		$this->db->select('kelahiran.*, penduduk_ayah.nama as nama_ayah, penduduk_ibu.nama as nama_ibu');
+		$this->db->from('kelahiran');
+		$this->db->join('penduduk as penduduk_ayah', 'kelahiran.nik_ayah = penduduk_ayah.nik', 'left');
+		$this->db->join('penduduk as penduduk_ibu', 'kelahiran.nik_ibu = penduduk_ibu.nik', 'left');
+		return $this->db->get()->result();
+	}
+
+	public function get_penduduk()
+	{
+		return $this->db->get('penduduk')->result();
 	}
 
 	public function cari($id_kelahiran)

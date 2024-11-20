@@ -31,9 +31,9 @@
                             <th style="text-align:center">No</th>
                             <th style="text-align:center">No. Surat</th>
                             <th style="text-align:center">Nama Anak</th>
-
                             <th style="text-align:center">Jenis Kelamin</th>
                             <th style="text-align:center">Tempat/Tanggal Lahir</th>
+                            <th style="text-align:center">Pelapor</th>
                             <th style="text-align:center">Hubungan</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
@@ -53,6 +53,7 @@
                             <td><?php echo $surat->kelamin_anak; ?></td>
                             <td><?php echo $surat->tempat_lahir_anak; ?>/
                                 <?= date('d F Y', strtotime($surat->tanggal_lahir_anak)); ?></td>
+                            <td><?php echo $pelapor->nama; ?></td>
                             <td><?php echo $surat->hubungan_sebagai; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('surat/surat_kelahiran/edit/' . $surat->id_surat_kelahiran); ?>"

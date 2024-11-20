@@ -9,7 +9,7 @@ class M_surat_kelahiran extends CI_Model
     public function daftar_surat_kelahiran()
     {
         $this->db->from('surat_kelahiran');
-        $this->db->join('penduduk', 'surat_kelahiran.nik_ayah=penduduk.nik');
+        $this->db->join('kelahiran', 'surat_kelahiran.id_kelahiran=kelahiran.id_kelahiran');
         $this->db->join('user', 'surat_kelahiran.id_pejabat=user.id');
         return $this->db->get()->result();
     }
@@ -35,7 +35,7 @@ class M_surat_kelahiran extends CI_Model
     {
         $this->db->from('surat_kelahiran');
         $this->db->where('id_surat_kelahiran', $id);
-        $this->db->join('penduduk', 'surat_kelahiran.nik_ayah=penduduk.nik');
+        $this->db->join('kelahiran', 'surat_kelahiran.id_kelahiran=kelahiran.id_kelahiran');
         $this->db->join('user', 'surat_kelahiran.id_pejabat=user.id');
         return $this->db->get()->row();
     }

@@ -20,6 +20,7 @@ class Surat extends CI_Controller
 		$this->load->model('m_surat_kematian');
 		$this->load->model('m_penghasilan');
 		$this->load->model('m_penduduk');
+		$this->load->model('m_kelahiran');
 	}
 	
 	public function domisili()
@@ -387,15 +388,8 @@ class Surat extends CI_Controller
 		if ($this->uri->segment('3') == "tambah") {
 			if ($this->input->post('tambah_surat_kelahiran')) {
 				$data = array(
-					'nik_ayah' => $this->input->post('ayah'),
-					'nik_ibu' => $this->input->post('ibu'),
+					'id_kelahiran' => $this->input->post('id_kelahiran'),
 					'nik_pelapor' => $this->input->post('pelapor'),
-					'nama_anak' => $this->input->post('nama'),
-					'kelamin_anak' => $this->input->post('kelamin'),
-					'tempat_lahir_anak' => $this->input->post('tempat'),
-					'tanggal_lahir_anak' => $this->input->post('tanggal'),
-					'jam_lahir_anak' => $this->input->post('jam'),
-					'hari_lahir_anak' => $this->input->post('hari'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
 					'no_surat' => $this->input->post('no_surat'),
@@ -406,9 +400,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kelahiran/'));
 			} else {
 				$data['title'] = "Surat Kelahiran - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukk'] = $this->m_penduduk->tampil();
-				$data['pendudukkk'] = $this->m_penduduk->tampil();
+				$data['pelapor'] = $this->m_penduduk->tampil();
+				$data['kelahiran'] = $this->m_kelahiran->tampil();
 				$data['pejabat'] = $this->m_surat_kelahiran->pejabat();
 				$this->load->view('header', $data);
 				$this->load->view('surat/tambah_surat_kelahiran', $data);
@@ -417,15 +410,8 @@ class Surat extends CI_Controller
 		} elseif ($this->uri->segment('3') == "edit") {
 			if ($this->input->post('edit_surat_kelahiran')) {
 				$data = array(
-					'nik_ayah' => $this->input->post('ayah'),
-					'nik_ibu' => $this->input->post('ibu'),
 					'nik_pelapor' => $this->input->post('pelapor'),
-					'nama_anak' => $this->input->post('nama'),
-					'kelamin_anak' => $this->input->post('kelamin'),
-					'tempat_lahir_anak' => $this->input->post('tempat'),
-					'tanggal_lahir_anak' => $this->input->post('tanggal'),
-					'jam_lahir_anak' => $this->input->post('jam'),
-					'hari_lahir_anak' => $this->input->post('hari'),
+					'id_kelahiran' => $this->input->post('id_kelahiran'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'no_surat' => $this->input->post('no_surat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
@@ -438,9 +424,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kelahiran/'));
 			} else {
 				$data['title'] = "Surat Kelahiran - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil();
-				$data['pendudukk'] = $this->m_penduduk->tampil();
-				$data['pendudukkk'] = $this->m_penduduk->tampil();
+				$data['pelapor'] = $this->m_penduduk->tampil();
+				$data['kelahiran'] = $this->m_kelahiran->tampil();
 				$data['pejabat'] = $this->m_surat_kelahiran->pejabat();
 				$data['surat_kelahiran'] = $this->m_surat_kelahiran->edit_surat_kelahiran($this->uri->segment('4'));
 				$this->load->view('header', $data);

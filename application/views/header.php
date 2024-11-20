@@ -96,10 +96,15 @@
                                                         ?>
 
                
+                    <li><a href="<?php echo base_url('Kelahiran/tampil'); ?>"><i class="fa fa-book"
+                                aria-hidden="true"></i> <span>Data Kelahiran</span></a></li>
                     <li><a href="<?php echo base_url('Kematian/tampil'); ?>"><i class="fa fa-history"
                                 aria-hidden="true"></i> <span>Data Kematian</span></a></li>
-                    <li><a href="<?php echo base_url('pindah/tampil'); ?>"><i class="fa fa-exchange"
+                    <li><a href="<?php echo base_url('pindah/tampil'); ?>"><i class="fa fa-arrow-up"
                                 aria-hidden="true"></i> <span>Data Pindah</span></a>
+                    </li>
+                    <li><a href="<?php echo base_url('kedatangan/tampil'); ?>"><i class="fa fa-arrow-down"
+                                aria-hidden="true"></i> <span>Data Kedatangan</span></a>
                     </li>
 
 

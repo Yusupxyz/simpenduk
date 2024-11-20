@@ -28,67 +28,42 @@
                                 <form action="<?php echo base_url('surat/surat_kelahiran/edit'); ?>" method="post">
 
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label>NIK Ayah</label>
+                                    <div class="form-group">
+                                            <label>Anak</label>
                                             <input type="hidden" name="id" class="form-control" required
                                                 value="<?php echo $surat_kelahiran->id_surat_kelahiran; ?>" />
-                                            <select name="ayah" class="form-control" id="nama" required>
+                                            <a href="<?php echo base_url(); ?>penduduk/tambah/"
+                                                class="btn btn-sm btn-primary pull-right">Tambah
+                                                Penduduk</a><br /><br />
+                                            <select name="id_kelahiran" class="form-control" id="nik" required>
                                                 <?php
-                                                foreach ($penduduk as $penduduk) :
-                                                    if ($penduduk->nik == $surat_kelahiran->nik_ayah) {
-                                                        ?>
-                                                <option value="<?php echo $penduduk->nik; ?>" selected>
-                                                    <?php echo $penduduk->nik; ?> - <?php echo $penduduk->nama; ?>
+                                                foreach ($kelahiran as $kelahiran) :
+                                                    ?>
+                                                <option value="<?php echo $kelahiran->id_kelahiran; ?>"
+                                                    <?php if ($kelahiran->id_kelahiran == $surat_kelahiran->id_kelahiran) echo "selected"; ?>>
+                                                    <?php echo $kelahiran->nama_anak; ?> - <?php echo $kelahiran->nama_ayah; ?> (Ayah) - <?php echo $kelahiran->nama_ibu; ?> (Ibu)
                                                 </option>
                                                 <?php
-                                                        } else {
-                                                            ?>
-                                                <option value="<?php echo $penduduk->nik; ?>">
-                                                    <?php echo $penduduk->nik; ?> - <?php echo $penduduk->nama; ?>
-                                                </option>
-                                                <?php
-                                                    }
                                                 endforeach;
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>NIK Ibu</label>
-                                            <select name="ibu" class="form-control" id="nama" required>
-                                                <?php
-                                                foreach ($pendudukk as $pendudukk) :
-                                                    if ($pendudukk->nik == $surat_kelahiran->nik_ibu) {
-                                                        ?>
-                                                <option value="<?php echo $pendudukk->nik; ?>" selected>
-                                                    <?php echo $pendudukk->nik; ?> - <?php echo $pendudukk->nama; ?>
-                                                </option>
-                                                <?php
-                                                        } else {
-                                                            ?>
-                                                <option value="<?php echo $pendudukk->nik; ?>">
-                                                    <?php echo $pendudukk->nik; ?> - <?php echo $pendudukk->nama; ?>
-                                                </option>
-                                                <?php
-                                                    }
-                                                endforeach;
-                                                ?>
-                                            </select>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label>NIK Pelapor</label>
                                             <select name="pelapor" class="form-control" id="nama" required>
                                                 <?php
-                                                foreach ($pendudukkk as $pendudukkk) :
-                                                    if ($pendudukkk->nik == $surat_kelahiran->nik_pelapor) {
+                                                foreach ($pelapor as $pelapor) :
+                                                    if ($pelapor->nik == $surat_kelahiran->nik_pelapor) {
                                                         ?>
-                                                <option value="<?php echo $pendudukkk->nik; ?>" selected>
-                                                    <?php echo $pendudukkk->nik; ?> - <?php echo $pendudukkk->nama; ?>
+                                                <option value="<?php echo $pelapor->nik; ?>" selected>
+                                                    <?php echo $pelapor->nik; ?> - <?php echo $pelapor->nama; ?>
                                                 </option>
                                                 <?php
                                                         } else {
                                                             ?>
-                                                <option value="<?php echo $pendudukkk->nik; ?>">
-                                                    <?php echo $pendudukkk->nik; ?> - <?php echo $pendudukkk->nama; ?>
+                                                <option value="<?php echo $pelapor->nik; ?>">
+                                                    <?php echo $pelapor->nik; ?> - <?php echo $pelapor->nama; ?>
                                                 </option>
                                                 <?php
                                                     }
@@ -96,90 +71,9 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Nama Anak</label>
-                                            <input type="text" name="nama" class="form-control" placeholder="Nama Anak"
-                                                required value="<?php echo $surat_kelahiran->nama_anak; ?>" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jenis Kelamin Anak</label>
-                                            <select name="kelamin" class="form-control" required>
-                                                <option value="Laki-Laki" <?php if ($surat_kelahiran->kelamin_anak == "Laki-Laki") {
-                                                                                echo "selected";
-                                                                            } ?>>Laki-Laki</option>
-                                                <option value="Perempuan" <?php if ($surat_kelahiran->kelamin_anak == "Perempuan") {
-                                                                                echo "selected";
-                                                                            } ?>>Perempuan</option>
-                                            </select>
-                                        </div>
-
-
-
-                                        <div class="form-group"></div>
-                                        <label>Tempat Tanggal Lahir</label>
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <input type="text" name="tempat"
-                                                    value="<?php echo $surat_kelahiran->tempat_lahir_anak; ?>"
-                                                    class="form-control" placeholder="Tempat">
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <select name="hari" class="form-control" required>
-                                                    <option value="Senin"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Senin") echo "selected"; ?>>
-                                                        Senin
-                                                    </option>
-                                                    <option value="Selasa"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Selasa") echo "selected"; ?>>
-                                                        Selasa
-                                                    </option>
-                                                    <option value="Rabu"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Rabu") echo "selected"; ?>>
-                                                        Rabu
-                                                    </option>
-                                                    <option value="Kamis"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Kamis") echo "selected"; ?>>
-                                                        Kamis
-                                                    </option>
-                                                    <option value="Jumat"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Jumat") echo "selected"; ?>>
-                                                        jumat
-                                                    </option>
-                                                    <option value="Sabtu"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Sabtu") echo "selected"; ?>>
-                                                        Sabtu
-                                                    </option>
-                                                    <option value="Minggu"
-                                                        <?php if ($surat_kelahiran->hari_lahir_anak == "Minggu") echo "selected"; ?>>
-                                                        Minggu
-                                                    </option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-xs-5">
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="date" name="tanggal"
-                                                        value="<?php echo $surat_kelahiran->tanggal_lahir_anak; ?>"
-                                                        class="form-control pull-right">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        
                                     <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Pukul</label>
-                                            <div class="input-group">
-                                                <input type="time" name="jam"
-                                                    value="<?php echo $surat_kelahiran->jam_lahir_anak; ?>" id="pukul"
-                                                    class="form-control timepicker" required>
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
 
                                         <div class="form-group">
                                             <label>Hubungan Sebagai</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 20, 2024 at 01:27 AM
+-- Generation Time: Nov 20, 2024 at 01:00 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -67,6 +67,39 @@ CREATE TABLE `domisili` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kedatangan`
+--
+
+CREATE TABLE `kedatangan` (
+  `id` int(11) NOT NULL,
+  `nik` varchar(100) NOT NULL,
+  `tanggal_datang` date NOT NULL,
+  `alasan_datang` varchar(100) NOT NULL,
+  `alamat_tujuan` varchar(100) NOT NULL,
+  `klasifikasi_datang` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelahiran`
+--
+
+CREATE TABLE `kelahiran` (
+  `id_kelahiran` int(50) NOT NULL,
+  `nik_ayah` varchar(30) NOT NULL,
+  `nik_ibu` varchar(30) NOT NULL,
+  `nama_anak` varchar(255) NOT NULL,
+  `kelamin_anak` varchar(15) NOT NULL,
+  `tempat_lahir_anak` varchar(255) NOT NULL,
+  `tanggal_lahir_anak` date NOT NULL,
+  `jam_lahir_anak` varchar(10) NOT NULL,
+  `hari_lahir_anak` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kematian`
 --
 
@@ -80,13 +113,6 @@ CREATE TABLE `kematian` (
   `tempat` text NOT NULL,
   `keterangan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kematian`
---
-
-INSERT INTO `kematian` (`id`, `nik`, `hari_wafat`, `tanggal_wafat`, `pukul`, `sebab_wafat`, `tempat`, `keterangan`) VALUES
-(2, '3215260401050001', 'Selasa', '2024-11-20', '21:36:00', 'Jantung', 'Ruang Kepala Bidang', '-');
 
 -- --------------------------------------------------------
 
@@ -205,21 +231,14 @@ CREATE TABLE `sktm_pendidikan` (
 --
 
 CREATE TABLE `surat_kelahiran` (
-  `id_surat_kelahiran` int(50) NOT NULL,
+  `id_surat_kelahiran` int(11) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik_ayah` varchar(30) NOT NULL,
-  `nik_ibu` varchar(30) NOT NULL,
-  `nik_pelapor` varchar(30) NOT NULL,
-  `nama_anak` varchar(255) NOT NULL,
-  `kelamin_anak` varchar(15) NOT NULL,
-  `tempat_lahir_anak` varchar(255) NOT NULL,
-  `tanggal_lahir_anak` date NOT NULL,
-  `jam_lahir_anak` varchar(10) NOT NULL,
-  `hari_lahir_anak` varchar(20) NOT NULL,
-  `hubungan_sebagai` varchar(100) NOT NULL,
-  `tanggal_surat_kelahiran` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_kelahiran` int(11) NOT NULL,
+  `tanggal_surat_kelahiran` date NOT NULL,
+  `nik_pelapor` varchar(16) NOT NULL,
+  `hubungan_sebagai` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -283,6 +302,18 @@ ALTER TABLE `cerai_mati`
 --
 ALTER TABLE `domisili`
   ADD PRIMARY KEY (`id_domisili`);
+
+--
+-- Indexes for table `kedatangan`
+--
+ALTER TABLE `kedatangan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kelahiran`
+--
+ALTER TABLE `kelahiran`
+  ADD PRIMARY KEY (`id_kelahiran`);
 
 --
 -- Indexes for table `kematian`
@@ -373,10 +404,22 @@ ALTER TABLE `domisili`
   MODIFY `id_domisili` int(50) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `kedatangan`
+--
+ALTER TABLE `kedatangan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kelahiran`
+--
+ALTER TABLE `kelahiran`
+  MODIFY `id_kelahiran` int(50) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `id` bigint(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menikah`
@@ -412,7 +455,7 @@ ALTER TABLE `sktm_pendidikan`
 -- AUTO_INCREMENT for table `surat_kelahiran`
 --
 ALTER TABLE `surat_kelahiran`
-  MODIFY `id_surat_kelahiran` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_surat_kelahiran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `surat_kematian`
