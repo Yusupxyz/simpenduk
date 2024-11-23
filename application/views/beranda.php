@@ -5,6 +5,52 @@
                 <h4 style="text-align:center"><b>SELAMAT DATANG DI SISTEM INFORMASI PENGELOLAAN DATA PENDUDUK<br>DESA PENARUKAN<br>
             KECAMATAN DUSUN UTARA<br>KABUPATEN BARITO SELATAN</b></h4>
                 <hr>
+                <div class="row">
+             <!-- Dashboard Pemduduk -->
+             <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="info-box bg-aqua">
+                     <span class="info-box-icon"> <i class="fa fa-users"></i></span>
+
+                     <div class="info-box-content">
+                         <span class="info-box-text">Total Penduduk</span>
+                         <span class="info-box-number"><?= $this->db->count_all_results('penduduk'); ?></span>
+                     </div>
+                 </div>
+             </div>
+             <!-- Kematian -->
+             <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="info-box bg-yellow">
+                     <span class="info-box-icon"><i class="fa fa-book"></i></span>
+
+                     <div class="info-box-content">
+                         <span class="info-box-text">Total Kematian</span>
+                         <span class="info-box-number"><?= $this->db->count_all_results('Kematian'); ?></span>
+                     </div>
+                 </div>
+             </div>
+             <!-- Pindah -->
+             <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="info-box bg-red">
+                     <span class="info-box-icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+
+                     <div class="info-box-content">
+                         <span class="info-box-text">Total Pindah</span>
+                         <span class="info-box-number"><?= $this->db->count_all_results('pindah'); ?></span>
+                     </div>
+                 </div>
+             </div>
+             <!-- Kedatangan -->
+             <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="info-box bg-green">
+                     <span class="info-box-icon"><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+
+                     <div class="info-box-content">
+                         <span class="info-box-text">Total Kedatangan</span>
+                         <span class="info-box-number"><?= $this->db->count_all_results('kedatangan'); ?></span>
+                     </div>
+                 </div>
+             </div>
+         </div>
             </div>
             <div style="text-align: center;"> <img style="cent"
                     src="<?php echo base_url('assets/images/logo_barsel.png'); ?>" width="200"
@@ -55,4 +101,5 @@
             </center>
         </div>
     </section>
+    
 </div>

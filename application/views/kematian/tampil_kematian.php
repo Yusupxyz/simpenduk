@@ -36,6 +36,7 @@
                             <th style="text-align:center">Tanggal Wafat</th>
                             <th style="text-align:center">Tempat Wafat</th>
                             <th style="text-align:center">Penyebab Kematian</th>
+                            <th style="text-align:center">Keterangan</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
                         </tr>
@@ -59,6 +60,7 @@
                             <td><?= date('d F Y', strtotime($kematian->tanggal_wafat)); ?></td>
                             <td><?php echo $kematian->tempat; ?></td>
                             <td><?php echo $kematian->sebab_wafat; ?></td>
+                            <td><?php echo $kematian->keterangan; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('kematian/edit/' . $kematian->id); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>

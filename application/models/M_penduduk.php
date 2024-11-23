@@ -5,7 +5,15 @@ class M_penduduk extends CI_Model
 {
 	public function tampil()
 	{
-		return $this->db->get('penduduk')->result();
+		$this->db->select('penduduk.*'); // Memilih semua kolom dari tabel penduduk
+		$this->db->from('penduduk');
+		$this->db->join('kematian', 'kematian.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kematian
+		$this->db->join('pindah', 'pindah.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kematian
+		$this->db->where('penduduk.nik NOT IN (SELECT nik FROM kematian)'); // Memindahkan kondisi untuk tidak ada di tabel kematian
+		$this->db->where('kematian.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kematian
+		$this->db->where('penduduk.nik NOT IN (SELECT nik FROM pindah)'); // Memindahkan kondisi untuk tidak ada di tabel kematian
+		$this->db->where('pindah.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kematian
+		return $this->db->get()->result(); // Mengembalikan hasil
 	}
 
 	public function cari($nik)
@@ -61,12 +69,4 @@ class M_penduduk extends CI_Model
 		return $this->db->get()->result(); // Mengembalikan hasil
 	}
 
-	public function tampil_pelapor()
-	{
-		$this->db->select('penduduk.*'); // Memilih semua kolom dari tabel penduduk
-		$this->db->from('penduduk');
-		$this->db->join('kematian', 'kematian.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kematian
-		$this->db->where('kematian.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kematian
-		return $this->db->get()->result(); // Mengembalikan hasil
-	}
 }

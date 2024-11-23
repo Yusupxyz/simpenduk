@@ -21,6 +21,7 @@ class Surat extends CI_Controller
 		$this->load->model('m_penghasilan');
 		$this->load->model('m_penduduk');
 		$this->load->model('m_kelahiran');
+		$this->load->model('m_kematian');
 	}
 	
 	public function domisili()
@@ -453,7 +454,7 @@ class Surat extends CI_Controller
 		if ($this->uri->segment('3') == "tambah") {
 			if ($this->input->post('tambah_surat_kematian')) {
 				$data = array(
-					'nik' => $this->input->post('nik'),
+					'id_kematian' => $this->input->post('id_kematian'),
 					'nik_pelapor' => $this->input->post('pelapor'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'no_surat' => $this->input->post('no_surat'),
@@ -465,8 +466,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kematian/'));
 			} else {
 				$data['title'] = "Surat Kematian - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil_kematian();
-				$data['pelapor'] = $this->m_penduduk->tampil_pelapor();
+				$data['kematian'] = $this->m_kematian->tampil();
+				$data['pelapor'] = $this->m_penduduk->tampil();
 				$data['pejabat'] = $this->m_surat_kematian->pejabat();
 				$this->load->view('header', $data);
 				$this->load->view('surat/tambah_surat_kematian', $data);
@@ -475,7 +476,7 @@ class Surat extends CI_Controller
 		} elseif ($this->uri->segment('3') == "edit") {
 			if ($this->input->post('edit_surat_kematian')) {
 				$data = array(
-					'nik' => $this->input->post('nik'),
+					'id_kematian' => $this->input->post('id_kematian'),
 					'nik_pelapor' => $this->input->post('pelapor'),
 					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
@@ -489,8 +490,8 @@ class Surat extends CI_Controller
 				redirect(base_url('surat/surat_kematian/'));
 			} else {
 				$data['title'] = "Surat Kematian - Desa Penarukan";
-				$data['penduduk'] = $this->m_penduduk->tampil_kematian();
-				$data['pelapor'] = $this->m_penduduk->tampil_pelapor();
+				$data['kematian'] = $this->m_kematian->tampil();
+				$data['pelapor'] = $this->m_penduduk->tampil();
 				$data['pejabat'] = $this->m_surat_kematian->pejabat();
 				$data['surat_kematian'] = $this->m_surat_kematian->edit_surat_kematian($this->uri->segment('4'));
 				$this->load->view('header', $data);

@@ -52,8 +52,14 @@ class M_kedatangan extends CI_Model
 
     public function get_penduduk()
 	{
-		$this->db->select('nik, nama');
+		$this->db->select('penduduk.nik, nama');
 		$this->db->from('penduduk');
+		$this->db->join('kedatangan', 'kedatangan.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kedatangan
+		$this->db->join('kematian', 'kematian.nik = penduduk.nik', 'left'); // Melakukan left join dengan tabel kematian
+		$this->db->where('penduduk.nik NOT IN (SELECT nik FROM kedatangan)'); // Memindahkan kondisi untuk tidak ada di tabel kedatangan
+		$this->db->where('kedatangan.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kedatangan
+		$this->db->where('penduduk.nik NOT IN (SELECT nik FROM kematian)'); // Memindahkan kondisi untuk tidak ada di tabel kematian
+		$this->db->where('kematian.nik IS NULL'); // Memfilter untuk hanya menampilkan penduduk yang tidak ada di tabel kematian
 		$query = $this->db->get();
 		return $query->result();
 	}

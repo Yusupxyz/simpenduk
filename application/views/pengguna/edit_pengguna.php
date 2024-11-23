@@ -51,7 +51,6 @@ if ($this->session->flashdata('sukses')) {
           <option value="admin" <?php if($pengguna->level == "admin"){ echo "selected"; } ?>>Admin</option>
           <option value="kepaladesa" <?php if($pengguna->level == "kepaladesa"){ echo "selected"; } ?>>Kepala Desa</option>
           <option value="sekretaris" <?php if($pengguna->level == "sekretaris"){ echo "selected"; } ?>>Sekretaris Desa</option>
-          <option value="kaurpemerintahan" <?php if($pengguna->level == "kaurpemerintahan"){ echo "selected"; } ?>>Kaur Pemerintahan</option>
           </select>
         </div>
         <div class="form-group">

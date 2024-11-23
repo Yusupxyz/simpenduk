@@ -10,6 +10,7 @@ class Pindah extends CI_Controller
 			redirect(base_url("login"));
 		}
 		$this->load->model('m_pindah');
+		$this->load->model('m_penduduk');
 	}
 	public function tampil()
 	{
@@ -20,20 +21,11 @@ class Pindah extends CI_Controller
 		$this->load->view('pindah/tampil_pindah');
 		$this->load->view('footer');
 	}
-	public function tampil_pindah2()
-	{
-		$data['title'] = "Data Pindah  - Desa Penarukan";
-		$data['pindah'] = $this->m_pindah->tampil();
-
-		$mutasi = $this->load->view('header', $data);
-		$this->load->view('pindah/tampil_pindah2');
-		$this->load->view('footer');
-	}
 
 	public function tambah()
 	{
 		$data['title'] = "Tambah Pindah  - Desa Penarukan";
-		$data['penduduk'] = $this->m_pindah->get_penduduk();
+		$data['penduduk'] = $this->m_penduduk->tampil();
 
 		$this->load->view('header', $data);
 		$this->load->view('pindah/tambah_pindah');

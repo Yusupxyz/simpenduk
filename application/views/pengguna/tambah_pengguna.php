@@ -57,7 +57,6 @@
                                     <option value="admin">Admin</option>
                                     <option value="kepaladesa">Kepala Desa</option>
                                     <option value="sekretaris">Sekretaris Desa</option>
-                                    <option value="kaurpemerintahan">Kaur Pemerintahan</option>
                                 </select>
                             </div>
                             <div class="form-group">

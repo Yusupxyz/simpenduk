@@ -10,9 +10,9 @@ class M_surat_kematian extends CI_Model
     public function daftar_surat_kematian()
     {
         $this->db->from('surat_kematian');
-        $this->db->join('penduduk', 'surat_kematian.nik=penduduk.nik');
         $this->db->join('user', 'surat_kematian.id_pejabat=user.id');
-        $this->db->join('kematian', 'surat_kematian.nik=kematian.nik'); // {{ edit_1 }}
+        $this->db->join('kematian', 'surat_kematian.id_kematian=kematian.id'); // {{ edit_1 }}
+        $this->db->join('penduduk', 'kematian.nik=penduduk.nik');
         return $this->db->get()->result();
     }
 

@@ -22,15 +22,7 @@ class Kematian extends CI_Controller
 		$this->load->view('kematian/tampil_kematian');
 		$this->load->view('footer');
 	}
-	public function tampil_kematian()
-	{
-		$data['title'] = "Data Kematian - Desa Penarukan";
-		$data['kematian'] = $this->m_kematian->tampil();
-
-		$this->load->view('header', $data);
-		$this->load->view('kematian/tampil_kematian2');
-		$this->load->view('footer');
-	}
+	
 	public function tambah()
 	{
 		$data['title'] = "Tambah Kematian - Desa Penarukan";

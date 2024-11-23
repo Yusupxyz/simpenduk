@@ -32,12 +32,12 @@
                                             <label>NIK</label><a href="<?php echo base_url(); ?>penduduk/tambah/"
                                                 class="btn btn-sm btn-primary pull-right">Tambah
                                                 Penduduk</a><br /><br />
-                                            <select name="nik" class="form-control" id="nama" required>
+                                            <select name="id_kelahiran" class="form-control" id="nik" required>
                                                 <?php
-                                                foreach ($penduduk as $penduduk) :
+                                                foreach ($kematian as $kematian) :
                                                     ?>
-                                                <option value="<?php echo $penduduk->nik; ?>">
-                                                    <?php echo $penduduk->nik; ?> - <?php echo $penduduk->nama; ?>
+                                                <option value="<?php echo $kematian->id; ?>">
+                                                    <?php echo $kematian->nik; ?> - <?php echo $kematian->nama; ?>
                                                 </option>
                                                 <?php
                                                 endforeach;

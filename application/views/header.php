@@ -59,15 +59,7 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 <ul class="sidebar-menu" data-widget="tree">
-                    <?php
-                                        //jika admin
-                                        if ($this->session->userdata('level') == 'admin') {
-                                                ?>
-                    <li><a href="<?php echo base_url('Dashboard'); ?>"><i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span></a>
-                        <?php
-                                                }
-                                                ?>
+                    
 
                     <li><a href="<?php echo base_url('beranda'); ?>"><i class="fa fa-home"></i> <span>Beranda</span></a>
                     </li>

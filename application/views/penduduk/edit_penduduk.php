@@ -73,10 +73,10 @@
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
                         <select class="select2 form-control custom-select" name="jenis_kelamin" required>
-                            <option value="Laki Laki" <?php if ($penduduk->jenis_kelamin == "L") echo "selected"; ?>>
-                                Laki Laki
+                            <option value="Laki-Laki" <?php if ($penduduk->jenis_kelamin == "Laki-laki") echo "selected"; ?>>
+                                Laki-Laki
                             </option>
-                            <option value="Perempuan" <?php if ($penduduk->jenis_kelamin == "P") echo "selected"; ?>>
+                            <option value="Perempuan" <?php if ($penduduk->jenis_kelamin == "Perempuan") echo "selected"; ?>>
                                 Perempuan
                             </option>
                         </select>

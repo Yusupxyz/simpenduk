@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 20, 2024 at 01:00 PM
+-- Generation Time: Nov 23, 2024 at 12:45 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -31,7 +31,7 @@ CREATE TABLE `belum_menikah` (
   `id_belum_menikah` int(50) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_belum_menikah` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,7 +45,7 @@ CREATE TABLE `cerai_mati` (
   `id_cerai_mati` int(50) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_cerai_mati` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -59,7 +59,7 @@ CREATE TABLE `domisili` (
   `id_domisili` int(50) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `no_surat_rt` varchar(255) NOT NULL,
   `tanggal_domisili` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,7 +72,7 @@ CREATE TABLE `domisili` (
 
 CREATE TABLE `kedatangan` (
   `id` int(11) NOT NULL,
-  `nik` varchar(100) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_datang` date NOT NULL,
   `alasan_datang` varchar(100) NOT NULL,
   `alamat_tujuan` varchar(100) NOT NULL,
@@ -86,9 +86,9 @@ CREATE TABLE `kedatangan` (
 --
 
 CREATE TABLE `kelahiran` (
-  `id_kelahiran` int(50) NOT NULL,
-  `nik_ayah` varchar(30) NOT NULL,
-  `nik_ibu` varchar(30) NOT NULL,
+  `id_kelahiran` int(11) NOT NULL,
+  `nik_ayah` bigint(16) NOT NULL,
+  `nik_ibu` bigint(16) NOT NULL,
   `nama_anak` varchar(255) NOT NULL,
   `kelamin_anak` varchar(15) NOT NULL,
   `tempat_lahir_anak` varchar(255) NOT NULL,
@@ -104,8 +104,8 @@ CREATE TABLE `kelahiran` (
 --
 
 CREATE TABLE `kematian` (
-  `id` bigint(16) NOT NULL,
-  `nik` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `hari_wafat` varchar(20) NOT NULL,
   `tanggal_wafat` date NOT NULL,
   `pukul` time NOT NULL,
@@ -121,10 +121,10 @@ CREATE TABLE `kematian` (
 --
 
 CREATE TABLE `menikah` (
-  `id_menikah` int(50) NOT NULL,
+  `id_menikah` int(11) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_menikah` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -140,7 +140,7 @@ CREATE TABLE `penduduk` (
   `nama` varchar(50) NOT NULL,
   `tempat_lahir` varchar(20) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL,
+  `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `rt` varchar(5) NOT NULL,
   `rw` varchar(50) NOT NULL,
@@ -156,10 +156,10 @@ CREATE TABLE `penduduk` (
 --
 
 CREATE TABLE `penghasilan` (
-  `id_penghasilan` int(50) NOT NULL,
+  `id_penghasilan` int(11) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `keperluan_penghasilan` text NOT NULL,
   `jumlah_penghasilan` int(11) NOT NULL,
   `tanggal_penghasilan` date NOT NULL
@@ -172,8 +172,8 @@ CREATE TABLE `penghasilan` (
 --
 
 CREATE TABLE `pindah` (
-  `id` bigint(20) NOT NULL,
-  `nik` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_pindah` date NOT NULL,
   `alasan_pindah` varchar(100) NOT NULL,
   `alamat_tujuan` varchar(100) NOT NULL,
@@ -187,10 +187,10 @@ CREATE TABLE `pindah` (
 --
 
 CREATE TABLE `skck` (
-  `id_skck` int(50) NOT NULL,
+  `id_skck` int(11) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik` varchar(30) NOT NULL,
+  `nik` bigint(16) NOT NULL,
   `tanggal_skck` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -201,11 +201,11 @@ CREATE TABLE `skck` (
 --
 
 CREATE TABLE `sktm_kesehatan` (
-  `id_sktm_kesehatan` int(50) NOT NULL,
+  `id_sktm_kesehatan` int(11) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
-  `nik_anak` varchar(30) NOT NULL,
-  `nik_ayah` varchar(16) NOT NULL,
+  `nik_anak` bigint(16) NOT NULL,
+  `nik_ayah` bigint(16) NOT NULL,
   `tanggal_sktm_kesehatan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -236,7 +236,7 @@ CREATE TABLE `surat_kelahiran` (
   `no_surat` varchar(100) NOT NULL,
   `id_kelahiran` int(11) NOT NULL,
   `tanggal_surat_kelahiran` date NOT NULL,
-  `nik_pelapor` varchar(16) NOT NULL,
+  `nik_pelapor` bigint(16) NOT NULL,
   `hubungan_sebagai` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -249,8 +249,8 @@ CREATE TABLE `surat_kelahiran` (
 CREATE TABLE `surat_kematian` (
   `id_surat_kematian` int(50) NOT NULL,
   `id_pejabat` int(11) NOT NULL,
-  `nik` varchar(30) NOT NULL,
-  `nik_pelapor` varchar(30) NOT NULL,
+  `id_kematian` int(11) NOT NULL,
+  `nik_pelapor` bigint(16) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
   `hubungan_sebagai` varchar(100) NOT NULL,
   `tanggal_surat_kematian` date NOT NULL
@@ -267,19 +267,10 @@ CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(32) NOT NULL,
   `nama_petugas` varchar(50) NOT NULL,
-  `level` enum('admin','sekretaris','kepaladesa','kaurpemerintahan') NOT NULL,
-  `nip` char(18) NOT NULL
+  `level` enum('admin','pimpinan') NOT NULL,
+  `nip` char(18) NOT NULL,
+  `jabatan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `nama_petugas`, `level`, `nip`) VALUES
-(1, 'admin', 'c4ca4238a0b923820dcc509a6f75849b', 'Angelina', 'admin', '-'),
-(2, 'kades', '202cb962ac59075b964b07152d234b70', 'Slamet', 'kepaladesa', '1990081720200410'),
-(3, 'sekdes', 'c4ca4238a0b923820dcc509a6f75849b', 'Rohman', 'sekretaris', ''),
-(4, 'mendawai', 'c4ca4238a0b923820dcc509a6f75849b', 'Zainudin', 'kaurpemerintahan', '198609262015051001');
 
 --
 -- Indexes for dumped tables
@@ -407,43 +398,43 @@ ALTER TABLE `domisili`
 -- AUTO_INCREMENT for table `kedatangan`
 --
 ALTER TABLE `kedatangan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kelahiran`
 --
 ALTER TABLE `kelahiran`
-  MODIFY `id_kelahiran` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kelahiran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `id` bigint(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menikah`
 --
 ALTER TABLE `menikah`
-  MODIFY `id_menikah` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_menikah` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `penghasilan`
 --
 ALTER TABLE `penghasilan`
-  MODIFY `id_penghasilan` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penghasilan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `skck`
 --
 ALTER TABLE `skck`
-  MODIFY `id_skck` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_skck` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sktm_kesehatan`
 --
 ALTER TABLE `sktm_kesehatan`
-  MODIFY `id_sktm_kesehatan` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sktm_kesehatan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sktm_pendidikan`
@@ -467,7 +458,7 @@ ALTER TABLE `surat_kematian`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

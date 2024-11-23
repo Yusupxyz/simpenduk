@@ -89,7 +89,7 @@
                                     </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <textarea name="keterangan" class="form-control" value="<?php echo $kematian->keterangan; ?>" rows="3"></textarea>
+                                    <textarea name="keterangan" class="form-control" rows="3"><?php echo $kematian->keterangan; ?></textarea>
                                 </div>
 
                                 <div class="form-group">
