@@ -32,6 +32,7 @@ class Pengguna extends CI_Controller
 		$nama = $this->input->post('nama');
 		$nip = $this->input->post('nip');
 		$username = $this->input->post('username');
+		$jabatan = $this->input->post('jabatan');
 		$level = $this->input->post('level');
 		$password = $this->input->post('password');
 		$ulangi_password = $this->input->post('ulangi_password');
@@ -58,6 +59,7 @@ class Pengguna extends CI_Controller
 			'nama_petugas' => ucwords($nama),
 			'nip' => $nip,
 			'username' => $username,
+			'jabatan' => $jabatan,
 			'level' => $level,
 			'password' => $password,
 		);
@@ -82,6 +84,7 @@ class Pengguna extends CI_Controller
 		$nama = $this->input->post('nama');
 		$nip = $this->input->post('nip');
 		$username = $this->input->post('username');
+		$jabatan = $this->input->post('jabatan');
 		$level = $this->input->post('level');
 		$password = $this->input->post('password');
 		$ulangi_password = $this->input->post('ulangi_password');
@@ -101,6 +104,7 @@ class Pengguna extends CI_Controller
 			'nama_petugas' => $nama,
 			'nip' => $nip,
 			'username' => $username,
+			'jabatan' => $jabatan,
 			'level' => $level,
 		);
 		$where = array(

@@ -75,7 +75,7 @@
                                                 }
 
                                                 //jika kepala desa atau sekertaris
-                                                if ($this->session->userdata('level') == 'kepaladesa' || $this->session->userdata('level') == 'sekertaris') {
+                                                if ($this->session->userdata('level') == 'pimpinan') {
                                                         ?>
                     <li><a href="<?php echo base_url('penduduk/tampil_penduduk'); ?>"><i
                                 class="fa fa-address-card-o"></i> <span>Data Penduduk</span></a></li>

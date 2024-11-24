@@ -26,15 +26,8 @@
 <font align="justify">
     Yang bertanda tangan dibawah ini , 
     <?php 
-        // Menentukan level berdasarkan jabatan
-        if ($menikah->level == 'kepaladesa') {
-            echo 'Kepala Desa';
-        } elseif ($menikah->level == 'sekretaris') {
-            echo 'Sekretaris Desa';
-        } else {
-            echo $menikah->level;
-        }
-    ?>  Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
+        echo $menikah->jabatan;
+    ?> Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">
     <tr>

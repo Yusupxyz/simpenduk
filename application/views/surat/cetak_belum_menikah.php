@@ -26,14 +26,7 @@
 <font align="justify">
     Yang bertanda tangan dibawah ini , 
     <?php 
-        // Menentukan level berdasarkan jabatan
-        if ($belum_menikah->level == 'Kepala Desa') {
-            echo 'Kepala Desa';
-        } elseif ($belum_menikah->level == 'Sekretaris') {
-            echo 'Sekretaris';
-        } else {
-            echo $belum_menikah->level;
-        }
+        echo $belum_menikah->jabatan;
     ?>  Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">

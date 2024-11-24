@@ -35,16 +35,7 @@
     <tr>
         <td>Jabatan</td>
         <td>:</td>
-        <td><?php 
-        // Menentukan level berdasarkan jabatan
-        if ($penghasilan->level == 'kepaladesa') {
-            echo 'Kepala Desa';
-        } elseif ($penghasilan->level == 'sekretaris') {
-            echo 'Sekretaris Desa';
-            } else {
-                echo $penghasilan->level;
-            }
-        ?></td>
+        <td><?php echo $penghasilan->jabatan; ?></td>
     </tr>
 </table>
 <br>

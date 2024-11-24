@@ -36,6 +36,7 @@
                             <th style="text-align:center">Nama</th>
                             <th style="text-align:center">NIP</th>
                             <th style="text-align:center">Username</th>
+                            <th style="text-align:center">Jabatan</th>
                             <th style="text-align:center">Level</th>
                             <th style="text-align:center">Aksi</th>
                         </tr>
@@ -51,6 +52,7 @@
                             <td><?php echo $pengguna->nama_petugas; ?></td>
                             <td><?php echo $pengguna->nip; ?></td>
                             <td><?php echo $pengguna->username; ?></td>
+                            <td><?php echo $pengguna->jabatan; ?></td>
                             <td><?php echo ($pengguna->level == 'kepaladesa') ? 'Kepala Desa' : (($pengguna->level == 'sekretaris') ? 'Sekretaris Desa' : 'Admin'); ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('pengguna/edit/' . $pengguna->id); ?>"

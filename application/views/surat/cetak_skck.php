@@ -26,14 +26,7 @@
 <font align="justify">
     Yang bertandatangan di bawah ini , 
     <?php 
-        // Menentukan level berdasarkan jabatan
-        if ($skck->level == 'kepaladesa') {
-            echo 'Kepala Desa';
-        } elseif ($skck->level == 'sekretaris') {
-            echo 'Sekretaris Desa';
-        } else {
-            echo $skck->level;
-        }
+        echo $skck->jabatan;
     ?>  Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN Provinsi Jawa Barat
 </font>
 <table width="100%">

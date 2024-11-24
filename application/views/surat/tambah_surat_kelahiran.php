@@ -81,10 +81,7 @@
                                                         ?>
                                                     <option value="<?php echo $data_pejabat->id; ?>">
                                                     <?php 
-                                                    // Mengubah level pejabat menjadi format yang benar
-                                                    $level = ($data_pejabat->level == 'kepaladesa') ? 'Kepala Desa' : 
-                                                             (($data_pejabat->level == 'sekretaris') ? 'Sekretaris' : $data_pejabat->level);
-                                                    echo $data_pejabat->nama_petugas; ?> - <?php echo $level; ?></option>
+                                                    echo $data_pejabat->nama_petugas; ?> - <?php echo $data_pejabat->jabatan; ?></option>
                                                     <?php
                                                     endforeach;
                                                     ?>

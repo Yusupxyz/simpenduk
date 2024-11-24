@@ -60,6 +60,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Jabatan<span style="color:red;">*</span></label>
+                                <input type="text" name="jabatan" class="form-control" required />
+                            </div>
+                            <div class="form-group">
                                 <label>Password<span style="color:red;">*</span></label>
                                 <input type="password" name="password" class="form-control" required />
                             </div>

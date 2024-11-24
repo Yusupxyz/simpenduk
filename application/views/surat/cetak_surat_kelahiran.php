@@ -46,10 +46,8 @@
 <br /><br /><br />
 <font align="justify">
     Yang bertandatangan di bawah ini , <?php 
-    // Mengubah level pejabat menjadi format yang benar
-    $level = ($surat_kelahiran->level == 'kepaladesa') ? 'Kepala Desa' : 
-             (($surat_kelahiran->level == 'sekretaris') ? 'Sekretaris' : $surat_kelahiran->level);
-    echo $level; ?> Penarukan Kecamatan
+        echo $surat_kelahiran->jabatan;
+    ?> Penarukan Kecamatan
     DUSUN UTARA Kabupaten BARITO SELATAN, menerangkan bahwa pada:
 </font>
 <table width="100%">

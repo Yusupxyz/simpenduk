@@ -28,15 +28,8 @@
 <font align="justify">
     Yang bertandatangan di bawah ini , 
     <?php 
-        // Menentukan level berdasarkan jabatan
-        if ($domisili->level == 'Kepala Desa') {
-            echo 'Kepala Desa';
-        } elseif ($domisili->level == 'Sekretaris') {
-            echo 'Sekretaris';
-        } else {
-            echo $domisili->level;
-        }
-    ?>  Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN menerangkan :
+        echo $domisili->jabatan;
+    ?> Desa Penarukan Kecamatan DUSUN UTARA Kabupaten BARITO SELATAN menerangkan :
 </font>
 <table width="100%">
     <tr>

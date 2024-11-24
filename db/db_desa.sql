@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 23, 2024 at 12:45 PM
+-- Generation Time: Nov 24, 2024 at 01:20 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -273,6 +273,15 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `nama_petugas`, `level`, `nip`, `jabatan`) VALUES
+(1, 'admin', 'c4ca4238a0b923820dcc509a6f75849b', 'Angelina', 'admin', '-', 'Admin'),
+(2, 'kades', '202cb962ac59075b964b07152d234b70', 'Slamet', 'pimpinan', '1990081720200410', 'Kepala Desa'),
+(3, 'sekdes', 'c4ca4238a0b923820dcc509a6f75849b', 'Rohman', 'pimpinan', '1990081720200411', 'Sekretaris');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -458,7 +467,7 @@ ALTER TABLE `surat_kematian`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -46,6 +46,10 @@ if ($this->session->flashdata('sukses')) {
           <input type="text" name="username" value="<?php echo $pengguna->username; ?>"  class="form-control" />
         </div>
         <div class="form-group">
+          <label>Jabatan</label>
+          <input type="text" name="jabatan" value="<?php echo $pengguna->jabatan; ?>"  class="form-control" />
+        </div>
+        <div class="form-group">
           <label>Level<span style="color:red;">*</span></label>
           <select name="level" class="form-control">
           <option value="admin" <?php if($pengguna->level == "admin"){ echo "selected"; } ?>>Admin</option>

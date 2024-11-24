@@ -4,7 +4,7 @@ class M_belum_menikah extends CI_Model
 {
     public function pejabat()
     {
-        return $this->db->query("SELECT * FROM user WHERE level IN ('kepaladesa', 'sekretaris')")->result();
+        return $this->db->query("SELECT * FROM user WHERE level IN ('pimpinan')")->result();
     }
     public function daftar_belum_menikah()
     {
