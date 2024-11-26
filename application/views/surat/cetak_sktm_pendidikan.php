@@ -20,7 +20,7 @@
 <br /><br /><br />
 <center>
     <font size="5"><u><b>SURAT KETERANGAN TIDAK MAMPU</b></u></font><br />Nomor:
-    <?php echo $sktm_kesehatan->no_surat; ?>
+    <?php echo $sktm_pendidikan->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">
