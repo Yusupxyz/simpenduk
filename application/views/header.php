@@ -64,28 +64,9 @@
                     <li><a href="<?php echo base_url('beranda'); ?>"><i class="fa fa-home"></i> <span>Beranda</span></a>
                     </li>
 
-                    <?php
 
-                                                //jika admin
-                                                if ($this->session->userdata('level') == 'admin') {
-                                                        ?>
                     <li><a href="<?php echo base_url('penduduk/tampil'); ?>"><i class="fa fa-address-card-o"></i>
                             <span>Data Penduduk</span></a></li>
-                    <?php
-                                                }
-
-                                                //jika kepala desa atau sekertaris
-                                                if ($this->session->userdata('level') == 'pimpinan') {
-                                                        ?>
-                    <li><a href="<?php echo base_url('penduduk/tampil_penduduk'); ?>"><i
-                                class="fa fa-address-card-o"></i> <span>Data Penduduk</span></a></li>
-
-                    <?php
-                                                }
-
-                                                //jika admin
-                                                if ($this->session->userdata('level') == 'admin') {
-                                                        ?>
 
                
                     <li><a href="<?php echo base_url('Kelahiran/tampil'); ?>"><i class="fa fa-book"
@@ -102,23 +83,7 @@
 
 
                     <?php
-                                                }
-
-                                                //jika kepala desa atau sekertaris
-                                                if ($this->session->userdata('level') == 'sekertaris') {
-                                                        ?>
-                    <li><a href="<?php echo base_url('kelahiran/tampil_kelahiran'); ?>"><i class="fa fa-book"
-                                aria-hidden="true"></i> <span>Data Kelahiran</span></a></li>
-                    <li><a href="<?php echo base_url('Kematian/tampil_kematian'); ?>"><i class="fa fa-history"
-                                aria-hidden="true"></i> <span>Data Kematian</span></a></li>
-                    <li><a href="<?php echo base_url('pindah/tampil_pindah2'); ?>"><i class="fa fa-exchange"
-                                aria-hidden="true"></i> <span>Data Pindah</span></a>
-                    </li>
-
-
-
-                    <?php
-                                                }
+                                                
                                                 //jika admin
                                                 if ($this->session->userdata('level') == 'admin') {
                                                         ?>

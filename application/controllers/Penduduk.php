@@ -20,16 +20,7 @@ class Penduduk extends CI_Controller {
 		$this->load->view('penduduk/tampil_penduduk');
 		$this->load->view('footer');
 	}
-
-	public function tampil_penduduk() {
-		$data['title'] = "Data Penduduk - Desa Penarukan";
-		$data['penduduk'] = $this->m_penduduk->tampil();
-
-		$mutasi = $this->load->view('header', $data);
-		$this->load->view('penduduk/tampil_penduduk2');
-		$this->load->view('footer');
-	}
-
+	
 	public function tambah() {
 		$data['title'] = "Tambah Penduduk - Desa Penarukan";
 

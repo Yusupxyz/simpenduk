@@ -18,12 +18,13 @@
                 </div>
                 <?php
                 }
-                ?>
-
+                ?>  
+<?php if ($this->session->userdata('level') == 'admin') { ?>
                 <p>
                     <a href="<?php echo base_url('kelahiran/tambah'); ?>" class="btn btn-success">Tambah Data
                         Kelahiran</a>
                 </p>
+                <?php } ?>
                 <br>
                 <table id="data" class="table table-bordered" width="200%" cellspacing="0">
                     <thead>
@@ -35,7 +36,9 @@
                             <th style="text-align:center">Jenis Kelamin</th>
                             <th style="text-align:center">Tanggal Lahir</th>
                             <th style="text-align:center">Tempat Lahir</th>
-                            <th style="text-align:center">Aksi</th>
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                <th style="text-align:center">Aksi</th>
+                            <?php } ?>
                         </tr>
                         </tr>
                     </thead>
@@ -53,6 +56,7 @@
                             <td><?php echo $kelahiran->hari_lahir_anak; ?>, <?php echo $kelahiran->tanggal_lahir_anak; ?> -
                                 <?php echo $kelahiran->jam_lahir_anak; ?></td>
                             <td><?php echo $kelahiran->tempat_lahir_anak; ?></td>
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('kelahiran/edit/' . $kelahiran->id_kelahiran); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
@@ -61,8 +65,9 @@
                                     class="btn btn-danger btn-xs"
                                     onClick="return confirm('Yakin Akan Menghapus Data?');"><i
                                         class="fa fa-trash-o"></i> Hapus</a>
+                            </td>
+                            <?php } ?>
                         </tr>
-                        </td>
                         <?php
                             $no++;
                         }

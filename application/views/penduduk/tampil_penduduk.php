@@ -23,8 +23,9 @@
         ?>
 
                 <p>
-                    <a href="<?php echo base_url('penduduk/tambah'); ?>" class="btn btn-success">Tambah Data
-                        Penduduk</a>
+                    <?php if ($this->session->userdata('level') == 'admin') { ?>
+                        <a href="<?php echo base_url('penduduk/tambah'); ?>" class="btn btn-success">Tambah Data Penduduk</a>
+                    <?php } ?>
 
 
                     <a href="<?php echo base_url('#'); ?>" target="_blank">
@@ -58,12 +59,14 @@
                             <td><?php echo $penduduk->alamat; ?></td>
                             <td><?php echo $penduduk->pekerjaan; ?></td>
                             <td style="text-align:center">
-                                <a href="<?php echo base_url('penduduk/edit/' . $penduduk->nik); ?>"
-                                    class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                                <a href="<?php echo base_url('penduduk/hapus/' . $penduduk->nik); ?>"
-                                    class="btn btn-danger btn-xs"
-                                    onClick="return confirm('Yakin Akan Menghapus Data?');"><i
-                                        class="fa fa-trash-o"></i> Hapus</a>
+                                <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                    <a href="<?php echo base_url('penduduk/edit/' . $penduduk->nik); ?>"
+                                        class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="<?php echo base_url('penduduk/hapus/' . $penduduk->nik); ?>"
+                                        class="btn btn-danger btn-xs"
+                                        onClick="return confirm('Yakin Akan Menghapus Data?');"><i
+                                            class="fa fa-trash-o"></i> Hapus</a>
+                                <?php } ?>
                                 <a href="<?php echo base_url('penduduk/detail/' . $penduduk->nik); ?>"
                                     class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i> Detail</a>
                         </tr>

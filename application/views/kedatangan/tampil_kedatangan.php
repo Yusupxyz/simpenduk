@@ -21,12 +21,14 @@
                 <?php
                 }
                 ?>
-
+                <?php if ($this->session->userdata('level') == 'admin') { ?>
                 <p>
                     <a href="<?php echo base_url('kedatangan/tambah'); ?>" class="btn btn-success">Tambah Data Kedatangan</a>
                     <a href="<?php echo base_url('#'); ?>" target="_blank">
                     </a>
                 </p>
+                <?php } ?>
+                <br>
                 <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr class="active">
@@ -38,8 +40,9 @@
                             <th style="text-align:center">Alasan</th>
                             <th style="text-align:center">Alamat Tujuan</th>
                             <th style="text-align:center">Klasifikasi Kedatangan</th>
-                            <th style="text-align:center">Aksi</th>
-                        </tr>
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                <th style="text-align:center">Aksi</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,15 +59,17 @@
                             <td><?php echo $kedatangan->alasan_datang; ?></td>
                             <td><?php echo $kedatangan->alamat_tujuan; ?></td>
                             <td><?php echo $kedatangan->klasifikasi_datang; ?></td>
-                            <td style="text-align:center">
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                <td style="text-align:center">
                                 <a href="<?php echo base_url('kedatangan/edit/' . $kedatangan->id); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
                                 <a href="<?php echo base_url('kedatangan/hapus/' . $kedatangan->id); ?>"
                                     class="btn btn-danger btn-xs"
                                     onClick="return confirm('Yakin Akan Menghapus Data?');"><i
                                         class="fa fa-trash-o"></i> Hapus</a>
+                                </td>
+                            <?php } ?>
                         </tr>
-                        </td>
                         <?php
                             $no++;
                         }

@@ -19,11 +19,12 @@
                 <?php
                 }
                 ?>
-
+<?php if ($this->session->userdata('level') == 'admin') { ?>
                 <p>
                     <a href="<?php echo base_url('kematian/tambah'); ?>" class="btn btn-success">Tambah Data
                         Kematian</a>
                 </p>
+                <?php } ?>
                 <br>
                 <table id="data" class="table table-bordered" width="200%" cellspacing="0">
                     <thead>
@@ -37,7 +38,9 @@
                             <th style="text-align:center">Tempat Wafat</th>
                             <th style="text-align:center">Penyebab Kematian</th>
                             <th style="text-align:center">Keterangan</th>
-                            <th style="text-align:center">Aksi</th>
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                <th style="text-align:center">Aksi</th>
+                            <?php } ?>
                         </tr>
                         </tr>
                     </thead>
@@ -61,7 +64,8 @@
                             <td><?php echo $kematian->tempat; ?></td>
                             <td><?php echo $kematian->sebab_wafat; ?></td>
                             <td><?php echo $kematian->keterangan; ?></td>
-                            <td style="text-align:center">
+                            <?php if ($this->session->userdata('level') == 'admin') { ?>
+                                <td style="text-align:center">
                                 <a href="<?php echo base_url('kematian/edit/' . $kematian->id); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
 
@@ -69,8 +73,9 @@
                                     class="btn btn-danger btn-xs"
                                     onClick="return confirm('Yakin Akan Menghapus Data?');"><i
                                         class="fa fa-trash-o"></i> Hapus</a>
+                                </td>
+                            <?php } ?>
                         </tr>
-                        </td>
                         <?php
                             $no++;
                         }
