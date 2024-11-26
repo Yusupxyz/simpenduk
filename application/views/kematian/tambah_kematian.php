@@ -30,7 +30,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Penduduk</label>
-                                <input type="hidden" name="id_kematian" value="<? $row->id ?>">
+                                <input type="hidden" name="id" value="<? $row->id ?>">
                                 <select name="nik" class="form-control select2" required>
                                     <option value="" selected disabled>- pilih penduduk -</option>
                                     <?php foreach ($penduduk as $p): ?>

@@ -53,7 +53,7 @@
                             <td><?php echo $pengguna->nip; ?></td>
                             <td><?php echo $pengguna->username; ?></td>
                             <td><?php echo $pengguna->jabatan; ?></td>
-                            <td><?php echo ($pengguna->level == 'kepaladesa') ? 'Kepala Desa' : (($pengguna->level == 'sekretaris') ? 'Sekretaris Desa' : 'Admin'); ?></td>
+                            <td><?php echo $pengguna->level; ?></td>
                             <td style="text-align:center">
                                 <a href="<?php echo base_url('pengguna/edit/' . $pengguna->id); ?>"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>

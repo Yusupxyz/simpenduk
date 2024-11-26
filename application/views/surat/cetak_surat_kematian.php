@@ -41,7 +41,7 @@
 <br /><br />
 <center><b>UNTUK YANG BERSANGKUTAN</b> <br />
     <font size="5"><u><b>SURAT KETERANGAN KEMATIAN</b></u></font><br />Nomor:
-    <?php echo $surat_kelahiran->no_surat; ?>
+    <?php echo $surat_kematian->no_surat; ?>
 </center>
 <br /><br /><br />
 <font align="justify">

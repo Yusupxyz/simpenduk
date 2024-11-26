@@ -30,24 +30,17 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>NIK</label>
-                                            <input type="hidden" name="id" class="form-control" required
+                                            <input type="hidden" name="id_surat_kematian" class="form-control" required
                                                 value="<?php echo $surat_kematian->id_surat_kematian; ?>" />
-                                            <select name="nik" class="form-control" id="nama" required>
-                                                <?php
-                                                foreach ($penduduk as $penduduk) :
-                                                    if ($penduduk->nik == $surat_kematian->nik) {
-                                                        ?>
-                                                <option value="<?php echo $penduduk->nik; ?>" selected>
-                                                    <?php echo $penduduk->nik; ?> - <?php echo $penduduk->nama; ?>
+                                            <select name="id_kematian" class="form-control" id="nama" required>
+                                            <?php
+                                                foreach ($kematian as $kematian) :
+                                                    ?>
+                                                <option value="<?php echo $kematian->id; ?>"
+                                                    <?php if ($kematian->id == $surat_kematian->id_kematian) echo "selected"; ?>>
+                                                    <?php echo $kematian->nik; ?> - <?php echo $kematian->nama; ?>
                                                 </option>
                                                 <?php
-                                                        } else {
-                                                            ?>
-                                                <option value="<?php echo $penduduk->nik; ?>">
-                                                    <?php echo $penduduk->nik; ?> - <?php echo $penduduk->nama; ?>
-                                                </option>
-                                                <?php
-                                                    }
                                                 endforeach;
                                                 ?>
                                             </select>

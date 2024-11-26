@@ -454,7 +454,7 @@ class Surat extends CI_Controller
 		if ($this->uri->segment('3') == "tambah") {
 			if ($this->input->post('tambah_surat_kematian')) {
 				$data = array(
-					'id_kematian' => $this->input->post('id_kematian'),
+					'id_surat_kematian' => $this->input->post('id_surat_kematian'),
 					'nik_pelapor' => $this->input->post('pelapor'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'no_surat' => $this->input->post('no_surat'),
@@ -476,14 +476,14 @@ class Surat extends CI_Controller
 		} elseif ($this->uri->segment('3') == "edit") {
 			if ($this->input->post('edit_surat_kematian')) {
 				$data = array(
-					'id_kematian' => $this->input->post('id_kematian'),
+					'id_surat_kematian' => $this->input->post('id_surat_kematian'),
 					'nik_pelapor' => $this->input->post('pelapor'),
 					'no_surat' => $this->input->post('no_surat'),
 					'id_pejabat' => $this->input->post('pejabat'),
 					'hubungan_sebagai' => $this->input->post('hubungan'),
 				);
 				$where = array(
-					'id_surat_kematian' => $this->input->post('id'),
+					'id_surat_kematian' => $this->input->post('id_surat_kematian'),
 				);
 				$this->m_surat_kematian->proses_edit_surat_kematian($where, $data);
 				$this->session->set_flashdata('sukses', 'Data berhasil diedit.');
