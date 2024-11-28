@@ -122,10 +122,71 @@ class Pengguna extends CI_Controller
 			$existing_user = $this->m_user->edit($this->input->post('id'));
 			$data['password'] = $existing_user->password;
 		}
-		var_dump($data);
+		// var_dump($data);
 		$this->m_user->proses_edit($where, $data);
 		$this->session->set_flashdata('sukses', 'Data Dengan ID ' . $this->input->post('id') . ' berhasil diedit.');
 		redirect(base_url('pengguna'));
+	}
+
+	public function edit_profil()
+	{
+		$data['title'] = "Edit Pengguna - Desa Penarukan";
+		$data['pengguna'] = $this->m_user->edit($this->uri->segment(3));
+
+		$this->load->view('header', $data);
+		$this->load->view('pengguna/edit_profil_pengguna');
+		$this->load->view('footer');
+	}
+
+	public function proses_edit_profil()
+	{
+		$nama = $this->input->post('nama');
+		$nip = $this->input->post('nip');
+		$username = $this->input->post('username');
+		$jabatan = $this->input->post('jabatan');
+		$level = $this->input->post('level');
+		$password = $this->input->post('password');
+		$ulangi_password = $this->input->post('ulangi_password');
+
+		if ($level == 'pimpinan') {
+			if (strlen($nip) != 18) {
+				$this->session->set_flashdata('error', 'NIP harus 18 karakter.');
+				redirect(base_url('pengguna/edit_profil/' . $this->input->post('id')));
+			}
+
+			$cek_nip = $this->m_user->cek_nip_edit($nip, $this->input->post('id'));
+			if ($cek_nip) {
+				$this->session->set_flashdata('error', 'NIP sudah terdaftar dalam basis data.');
+				redirect(base_url('pengguna/edit_profil/' . $this->input->post('id')));
+			}
+		}
+
+		$data = array(
+			'nama_petugas' => $nama,
+			'nip' => $nip,
+			'username' => $username,
+			'jabatan' => $jabatan,
+			'level' => $level,
+		);
+		$where = array(
+			'id' => $this->input->post('id'),
+		);
+
+		if (!empty($password) || !empty($ulangi_password)) {
+			if ($password != $ulangi_password) {
+				$this->session->set_flashdata('error', 'Password dan Ulangi Password tidak sama.');
+				redirect(base_url('pengguna/edit_profil/' . $this->input->post('id')));
+			}
+			$password = md5($password);
+			$data['password'] = $password;
+		} else {
+			$existing_user = $this->m_user->edit($this->input->post('id'));
+			$data['password'] = $existing_user->password;
+		}
+		// var_dump($data);
+		$this->m_user->proses_edit($where, $data);
+		$this->session->set_flashdata('sukses', 'Data Dengan ID ' . $this->input->post('id') . ' berhasil diedit.');
+		redirect(base_url('beranda'));
 	}
 
 	public function hapus() {

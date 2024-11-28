@@ -31,7 +31,7 @@ if ($this->session->flashdata('sukses')) {
         }
         ?>
 
-        <form action="<?php echo base_url('pengguna/proses_edit'); ?>" method="post">
+        <form action="<?php echo base_url('pengguna/proses_edit_profil'); ?>" method="post">
             <div class="form-group">
           <label>Nama<span style="color:red;">*</span></label>
           <input type="hidden" name="id" value="<?php echo $pengguna->id; ?>"  class="form-control" />
@@ -51,8 +51,10 @@ if ($this->session->flashdata('sukses')) {
         </div>
         <div class="form-group">
           <label>Level<span style="color:red;">*</span></label>
-          <select name="level" class="form-control">
-            <option value="admin" <?php if($pengguna->level == "admin"){ echo "selected"; } ?>>Admin</option>
+          <select name="level" class="form-control" >
+            <?php if ($pengguna->level == 'admin'){ ?>
+              <option value="admin" <?php if($pengguna->level == "admin"){ echo "selected"; } ?>>Admin</option>
+            <?php } ?>
             <option value="pimpinan" <?php if($pengguna->level == "pimpinan"){ echo "selected"; } ?>>Pimpinan</option>
           </select>
         </div>
@@ -66,7 +68,7 @@ if ($this->session->flashdata('sukses')) {
           </div>
         <div class="form-group">
           <button class="btn btn-success">Simpan</button>
-          <a href="<?php echo base_url('pengguna'); ?>" class="btn btn-danger">Batal</a>
+          <a href="<?php echo base_url('beranda'); ?>" class="btn btn-danger">Batal</a>
         </div>
       </form>
     </div>

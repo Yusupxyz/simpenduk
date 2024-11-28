@@ -55,8 +55,7 @@
                                 <select name="level" class="form-control" required>
                                     <option value="" selected disabled>- pilih -</option>
                                     <option value="admin">Admin</option>
-                                    <option value="kepaladesa">Kepala Desa</option>
-                                    <option value="sekretaris">Sekretaris Desa</option>
+                                    <option value="pimpinan">Pimpinan</option>
                                 </select>
                             </div>
                             <div class="form-group">

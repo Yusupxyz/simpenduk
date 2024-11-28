@@ -130,7 +130,7 @@
                         }
                         ?>
                 
-                <li><a href="<?php echo base_url('pengguna/edit/' . $this->session->userdata('id')); ?>"><i class="fa fa-user"
+                <li><a href="<?php echo base_url('pengguna/edit_profil/' . $this->session->userdata('id')); ?>"><i class="fa fa-user"
                                 aria-hidden="true"></i> <span>Edit Profil</span></a>
                     </li>
                 <li><a href="<?php echo base_url('logout'); ?>"><i class="fa fa-power-off"></i> <span>Logout</span></a>
