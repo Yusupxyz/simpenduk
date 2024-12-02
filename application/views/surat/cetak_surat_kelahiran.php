@@ -35,7 +35,7 @@
     <tr>
         <td>Provinsi</td>
         <td>:</td>
-        <td>JAWA BARAT</td>
+        <td>KALIMANTAN TENGAH</td>
     </tr>
 </table>
 <br /><br />
